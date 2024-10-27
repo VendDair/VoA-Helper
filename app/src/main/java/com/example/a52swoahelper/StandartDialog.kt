@@ -1,5 +1,6 @@
 package com.example.a52swoahelper
 
+import android.annotation.SuppressLint
 import android.app.AlertDialog
 import android.app.Dialog
 import android.content.Context
@@ -11,10 +12,11 @@ import android.widget.TextView
 
 class StandartDialog(private val context: Context) {
 
-    lateinit var dialog: Dialog
+    private lateinit var dialog: Dialog
 
     private lateinit var dialogView: View
 
+    @SuppressLint("InflateParams")
     fun showDialog(imageResId: Int, text: String, onYesClick: () -> Unit, onNoClick: () -> Unit) {
         // Inflate the custom layout
         dialogView = LayoutInflater.from(context).inflate(R.layout.dialog_layout, null)
