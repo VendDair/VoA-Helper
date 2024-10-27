@@ -32,22 +32,6 @@ class Commands {
                 e.printStackTrace()
                 "Error: ${e.message}"
             }
-            /*            executor.execute {
-
-                        }*/
-            /*            GlobalScope.launch(Dispatchers.IO) {
-                            try {
-
-                                val process = Runtime.getRuntime().exec(command)
-                                process.waitFor()
-
-                                process.inputStream.bufferedReader().use { it.readText() }
-
-                            } catch (e: Exception) {
-                                e.printStackTrace()
-                                "Error: ${e.message}"
-                            }
-                        }*/
 
         }
 

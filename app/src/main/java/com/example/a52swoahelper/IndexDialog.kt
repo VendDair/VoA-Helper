@@ -56,28 +56,6 @@ class IndexDialog(private val context: Context) {
                 false // Indicate that the event was not handled
             }
         }
-/*
-        // Get references to the views
-        val dialogImage: ImageView = dialogView.findViewById(R.id.image)
-        val dialogText: TextView = dialogView.findViewById(R.id.text)
-        val buttonYes: Button = dialogView.findViewById(R.id.button_yes)
-        val buttonNo: Button = dialogView.findViewById(R.id.button_no)
-
-        // Set the image and message
-        dialogImage.setImageResource(imageResId)
-        dialogText.text = text
-
-        // Set button click listeners
-        buttonYes.setOnClickListener {
-            onYesClick()
-            dialog.dismiss() // Close the dialog
-        }
-
-        buttonNo.setOnClickListener {
-            onNoClick()
-            dialog.dismiss() // Close the dialog
-        }
-        */
         // Create and show the dialog
         dialog = dialogBuilder.create()
         dialog.show()

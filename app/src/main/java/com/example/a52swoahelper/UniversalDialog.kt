@@ -53,49 +53,6 @@ class UniversalDialog(private val context: Context) {
             container.addView(buttonView)
         }
 
-
-/*        editText.setOnKeyListener { v, keyCode, event ->
-            if (event.action == KeyEvent.ACTION_DOWN && keyCode == KeyEvent.KEYCODE_ENTER) {
-                // User pressed Enter
-                // Attempt to convert the text to an integer
-                val inputText = editText.text.toString()
-                try {
-                    index = inputText.toInt() // This may throw an exception if inputText is not a valid integer
-                    dialog.dismiss()
-                } catch (e: NumberFormatException) {
-                    // Handle the error, e.g., show a message to the user
-                    Toast.makeText(context, "Please enter a valid number", Toast.LENGTH_SHORT).show()
-                }
-                onItemClick()
-
-                dialog.dismiss()
-                true // Indicate that the event was handled
-            } else {
-                false // Indicate that the event was not handled
-            }
-        }*/
-        /*
-                // Get references to the views
-                val dialogImage: ImageView = dialogView.findViewById(R.id.image)
-                val dialogText: TextView = dialogView.findViewById(R.id.text)
-                val buttonYes: Button = dialogView.findViewById(R.id.button_yes)
-                val buttonNo: Button = dialogView.findViewById(R.id.button_no)
-
-                // Set the image and message
-                dialogImage.setImageResource(imageResId)
-                dialogText.text = text
-
-                // Set button click listeners
-                buttonYes.setOnClickListener {
-                    onYesClick()
-                    dialog.dismiss() // Close the dialog
-                }
-
-                buttonNo.setOnClickListener {
-                    onNoClick()
-                    dialog.dismiss() // Close the dialog
-                }
-                */
         // Create and show the dialog
         dialog = dialogBuilder.create()
         dialog.show()
