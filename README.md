@@ -40,7 +40,7 @@ After that go into the app and press *Install Windows* and press *yes*
 
 Then select your preferred method, select the wim/esd listed there (If you put a number that is not listed, the app will crash) and select the index listed there you want
 
-So that's all. Now go make a cup of tea because this will take a few minutes. When you're back, Windows should already be installed :)
+So that's all. Now go make a cup of tea because this will take a few minutes (not more then 5). When you're back, Windows should already be installed :)
 
 *If there are any issues please mention them [here](https://t.me/a52sxq_uefi) with screenshots/pics and any other details that can help fixing the problem*
 
