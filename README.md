@@ -26,17 +26,17 @@ Now you need to open the [app](https://github.com/VendDair/VoA-Helper/releases) 
 
 It will have created 2 folders that are needed for it to function properly.
 
-Then [download](https://github.com/VendDair/VoA-Helper/releases) Driver.zip, pe.img and uefi.img
+Then [download](https://github.com/VendDair/VoA-Helper/releases) **Driver.zip**, **pe.img** and **uefi.img**
 
-Put Driver.zip and pe.img in the WindowsInstall folder.
+Put **Driver.zip** and **pe.img** in *WindowsInstall* folder
 
 <img src="https://github.com/VendDair/VoA-Helper/blob/main/Guide%20stuff/windowsinstall.png" alt="Image" width="300" />
 
-Then put uefi.img in the UEFI folder
+Then put **uefi.img** in UEFI folder
 
 <img src="https://github.com/VendDair/VoA-Helper/blob/main/Guide%20stuff/uefi.png" alt="Image" width="300" />
 
-After that go into the app and press "Install Windows", then click on "yes"
+After that go into the app and press *Install Windows* and press *yes*
 
 Then select your preferred method, select the wim/esd listed there (If you put a number that is not listed, the app will crash) and select the index listed there you want
 
