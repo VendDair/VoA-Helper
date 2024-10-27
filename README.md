@@ -9,7 +9,7 @@ Requirements:
 - wim/esd file of Windows
 - Free space. Not less then 15GB
 - Backups because formatting data will be required
-- [All partitions set]()
+- [All partitions set](https://github.com/VendDair/VoA-Helper/blob/main/Guide%20stuff/PARTITIONS.md)
 
 The first step is to decide what Windows version you want.
 There are two options:
