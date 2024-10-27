@@ -1,30 +1,24 @@
 package com.example.a52swoahelper
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.view.Gravity
 import android.widget.Button
 import android.widget.LinearLayout
 import android.widget.TextView
-import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.enableEdgeToEdge
-import androidx.compose.runtime.snapshots.Snapshot
-import com.example.a52swoahelper.Commands.Companion.adjustIndexList
-import com.example.a52swoahelper.Commands.Companion.cleanIndexList
-import com.example.a52swoahelper.Commands.Companion.context
-import com.example.a52swoahelper.Commands.Companion.executeCommand
-import java.util.concurrent.Executors
 
 class MainActivity : ComponentActivity() {
 
-    lateinit var bootIntoWindowsButton: LinearLayout
-    lateinit var mountWindowsButton: LinearLayout
-    lateinit var helpButton: Button
-    lateinit var backupBootButton: LinearLayout
-    lateinit var installWindowsButton: LinearLayout
+    private lateinit var bootIntoWindowsButton: LinearLayout
+    private lateinit var mountWindowsButton: LinearLayout
+    private lateinit var helpButton: Button
+    private lateinit var backupBootButton: LinearLayout
+    private lateinit var installWindowsButton: LinearLayout
 
+    @SuppressLint("SdCardPath")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -36,7 +30,7 @@ class MainActivity : ComponentActivity() {
         Files.createFolderIfFolderDontExists("/sdcard/UEFI", this)
 
         bootIntoWindowsButton = findViewById(R.id.BootIntoWindowsButton)
-        bootIntoWindowsButton.setOnClickListener{
+        bootIntoWindowsButton.setOnClickListener {
             val standartDialog = StandartDialog(this)
             standartDialog.showDialog(
                 imageResId = R.drawable.win11logo,
@@ -53,14 +47,16 @@ class MainActivity : ComponentActivity() {
         if (Commands.isWindowsMounted()) {
             mountWindows.text = getString(R.string.unmount_windows)
         }
-        mountWindowsButton.setOnClickListener{
+        mountWindowsButton.setOnClickListener {
             val standartDialog = StandartDialog(this)
             standartDialog.showDialog(
                 imageResId = R.drawable.folder,
-                text = if (!Commands.isWindowsMounted()) getString(R.string.mount_windows_dialog) else getString(R.string.unmount_windows_dialog),
+                text = if (!Commands.isWindowsMounted()) getString(R.string.mount_windows_dialog) else getString(
+                    R.string.unmount_windows_dialog
+                ),
                 onYesClick = {
                     if (Commands.isWindowsMounted()) {
-                         Commands.executeCommand("su -mm -c umount /sdcard/Windows", true)
+                        Commands.executeCommand("su -mm -c umount /sdcard/Windows", true)
 
                         mountWindows.text = getString(R.string.mount_windows)
                         return@showDialog
@@ -78,13 +74,13 @@ class MainActivity : ComponentActivity() {
         }
 
         helpButton = findViewById(R.id.HelpButton)
-        helpButton.setOnClickListener{
+        helpButton.setOnClickListener {
             val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://t.me/a52sxq_uefi"))
             startActivity(intent)
         }
 
         backupBootButton = findViewById(R.id.BackupBootButton)
-        backupBootButton.setOnClickListener{
+        backupBootButton.setOnClickListener {
             val standartDialog = StandartDialog(this)
             standartDialog.showDialog(
                 imageResId = R.drawable.cd,
@@ -97,12 +93,49 @@ class MainActivity : ComponentActivity() {
         }
 
         installWindowsButton = findViewById(R.id.InstallWindowsButton)
-        installWindowsButton.setOnClickListener{
-            val standartDialog = StandartDialog(this)
+        installWindowsButton.setOnClickListener {
+
+            UniversalDialog(this).showDialog(
+                title = "Do you want to install Windows?",
+                text = "Only if you have win and esp partitions present",
+                image = R.drawable.installer,
+                buttons = listOf(
+                    Pair("YES") {
+                        UniversalDialog(this).showDialog(
+                            title = "Select method",
+                            buttons = listOf(
+                                Pair("Pre-made Image (fast)") {
+                                    Commands.installWindows(1)
+                                },
+                                Pair("Custom Image (slower)") {
+                                    Commands.installWindows( 2)
+                                }
+                            )
+                        )
+                    },
+                    Pair("GUIDE") {
+
+                        val intent = Intent(
+                            Intent.ACTION_VIEW,
+                            Uri.parse("https://github.com/VendDair/VoA-Helper/blob/main/README.md")
+                        )
+                        startActivity(intent)
+
+                    },
+                    Pair("NO") {
+
+                    },
+                )
+            )
+
+            /*val standartDialog = StandartDialog(this)
             standartDialog.showDialog(
                 imageResId = R.drawable.installer,
                 text = getString(R.string.install_windows_dialog),
                 onYesClick = {
+
+
+
                     TwoOptionDialog(this).showDialog("Select method", "Pre-made Image (fast)", "Custom Image (slower)",
                         onBtn1Click = {
                             val wimFiles = executeCommand("su -c ls /sdcard/WindowsInstall/ | grep -E \".wim|.esd\"", true)
@@ -169,9 +202,15 @@ class MainActivity : ComponentActivity() {
                         }
                     )
 
+
+
                 },
                 onNoClick = {}
             )
+
+
+
+            */
         }
     }
 

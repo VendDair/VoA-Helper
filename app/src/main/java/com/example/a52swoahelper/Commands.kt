@@ -1,20 +1,22 @@
 package com.example.a52swoahelper
 
+import android.annotation.SuppressLint
 import android.content.Context
-import java.util.concurrent.ExecutorService
+import android.view.Gravity
 
 
 class Commands {
     companion object {
 
+        @SuppressLint("StaticFieldLeak")
         lateinit var context: Context
 
-        fun adjustIndexList(strings: List<String>): List<String> {
+        private fun adjustIndexList(strings: List<String>): List<String> {
             return strings.mapIndexed { index, value -> "${index + 1}. $value" }
         }
 
-        fun cleanIndexList(strings: List<String>): List<String> {
-            return strings.mapIndexed { index, value -> value.replace("\n", "") }
+        private fun cleanIndexList(strings: List<String>): List<String> {
+            return strings.mapIndexed { _, value -> value.replace("\n", "") }
         }
 
         fun executeCommand(command: String) {
@@ -69,6 +71,7 @@ class Commands {
         }
 
 
+        @SuppressLint("SdCardPath")
         fun bootIntoWindows(context: Context) {
             Files.createFolderIfFolderDontExists("/sdcard/UEFI", context)
             if (Files.alertUserIfFileDoesntExist("uefi.img", "/sdcard/UEFI/", context)) return
@@ -83,6 +86,7 @@ class Commands {
             return isMounted.isNotEmpty()
         }
 
+        @SuppressLint("SdCardPath")
         fun mountWindows(context: Context): String {
             Files.createFolderIfFolderDontExists("/sdcard/Windows", context)
             if (!Files.checkIfFileExists("/data/local/tmp/mount.ntfs")) {
@@ -93,7 +97,7 @@ class Commands {
                 "su -mm -c /data/local/tmp/mount.ntfs -o rw /dev/block/by-name/win /sdcard/Windows",
                 false
             )
-            if (result != "0") return result.toString()
+            if (result != "0") return result
             return "0"
         }
 
@@ -102,30 +106,70 @@ class Commands {
             executeCommand("su -c dd bs=8M if=/dev/block/by-name/boot of=/sdcard/boot.img")
         }
 
-        fun get_wim_esd_file(): List<String> {
-            var path: String = "none"
-            var index: String = "none"
-            val wimFiles = executeCommand("su -c ls /sdcard/WindowsInstall/ | grep .wim", true)
-            var wimFilesList: List<String> = wimFiles.split(" ")
-            wimFilesList = cleanIndexList(wimFilesList)
-            val wimFilesListRender = adjustIndexList(wimFilesList)
+
+        // voa installers code
+        @SuppressLint("SdCardPath")
+        fun showWimFilesDialog(context: Context, method: Int) {
+            val wimFiles = fetchWimFiles()
+            val wimFilesList = prepareWimFilesList(wimFiles)
+
             val indexDialog = IndexDialog(context)
             indexDialog.showDialog(
                 title = "Select the wim you want to install",
-                wimFilesListRender
+                adjustIndexList(wimFilesList)
             ) {
-                path = "/sdcard/WindowsInstall/" + wimFilesList[indexDialog.index - 1]
-                index = indexDialog.index.toString()
+                val selectedWimFile = wimFilesList[indexDialog.index - 1]
+                val path = "/sdcard/WindowsInstall/$selectedWimFile"
 
-                /*                installWindows(
-                                    "/sdcard/WindowsInstall/" + wimFilesList[indexDialog.index - 1],
-                                    indexDialog.index
-                                )*/
+                val indexes = fetchWimFileIndexes(path)
+                showIndexDialog(context, indexes, method, path)
             }
-            return listOf(path, index)
         }
 
-        fun installWindows(path: String, index: Int, method: Int) {
+        private fun fetchWimFiles(): String {
+            return executeCommand("su -c ls /sdcard/WindowsInstall/ | grep -E \".wim|.esd\"", true)
+        }
+
+        private fun prepareWimFilesList(wimFiles: String): List<String> {
+            return wimFiles.split("\n").dropLast(1).let { cleanIndexList(it) }
+        }
+
+        private fun fetchWimFileIndexes(path: String): String {
+            return executeCommand("su -c /data/local/tmp/wimlib-imagex info $path | grep -E \"Index|Name|Description|Display Name|Display Description\" | grep -v -E \"Boot Index|Product Name\"", true)
+        }
+
+        private fun showIndexDialog(context: Context, indexes: String, method: Int, path: String) {
+            val indexDialog = IndexDialog(context)
+            indexDialog.showDialog(
+                title = "Select index",
+                listOf(indexes),
+                Gravity.START
+            ) {
+                val index = indexDialog.index
+                handleFlashMethod(method, context)
+                savePathAndIndex(path, index)
+                rebootRecovery()
+            }
+        }
+
+        private fun handleFlashMethod(method: Int, context: Context) {
+            val assetFileName = if (method == 1) "flash.zip" else "flash1.zip"
+            Files.copyAssetToLocal(context, assetFileName)
+            executeCommand("su -c echo install /data/local/tmp/$assetFileName > /cache/recovery/openrecoveryscript")
+        }
+
+        private fun savePathAndIndex(path: String, index: Int) {
+            executeCommand("su -c echo $path > /data/local/tmp/path")
+            executeCommand("su -c echo $index > /data/local/tmp/index")
+        }
+
+        private fun rebootRecovery() {
+            executeCommand("su -c reboot recovery")
+        }
+
+
+        @SuppressLint("SdCardPath")
+        fun installWindows(method: Int) {
             if (Files.alertUserIfFileDoesntExist(
                     "pe.img",
                     "/sdcard/WindowsInstall/",
@@ -145,42 +189,8 @@ class Commands {
                 Files.copyAssetToLocal(context, "wimlib-imagex")
                 executeCommand("su -c chmod 777 /data/local/tmp/wimlib-imagex")
             }
-            /*if (!Files.checkIfFileExists("/data/local/tmp/openrecoveryscript")) {
-                Files.copyAssetToLocal(context, "openrecoveryscript")
-            }*/
 
-            if (method == 1) {
-                Files.copyAssetToLocal(context, "flash.zip")
-                executeCommand("su -c echo install /data/local/tmp/flash.zip > /cache/recovery/openrecoveryscript")
-            } else if (method == 2) {
-                Files.copyAssetToLocal(context, "flash1.zip")
-                executeCommand("su -c echo install /data/local/tmp/flash1.zip > /cache/recovery/openrecoveryscript")
-            }
-            //executeCommand("su -c cp /data/local/tmp/openrecoveryscript /cache/recovery/")
-
-            executeCommand("su -c echo $path > /data/local/tmp/path")
-            executeCommand("su -c echo $index > /data/local/tmp/index")
-
-            executeCommand("su -c reboot recovery")
-
-
-            /*                executeCommand("su -c /data/local/tmp/mkfs.fat -F32 -s1 /dev/block/bootdevice/by-name/esp -n ESPA52SXQ")
-                            executeCommand("su -c /data/local/tmp/mkfs.ntfs -f /dev/block/bootdevice/by-name/win -L WINA52SXQ")
-                            GlobalScope.launch(Dispatchers.IO) {
-                                executeCommand("su -mm -c /data/local/tmp/wimlib-imagex apply $path /dev/block/by-name/win")
-                                mountWindows(context)
-                                executeCommand("su -c mkdir /sdcard/Windows/installer")
-                                *//*            executeCommand("su -c cp /sdcard/WindowsInstall/install.bat /sdcard/Windows/installer")*//*
-
-                    executeCommand("su -mm -c dd if=/sdcard/WindowsInstall/pe.img of=/dev/block/by-name/esp bs=4M")
-                    executeCommand("su -c sync")
-
-                    backupBootImage()
-                    executeCommand("su -c cp /sdcard/boot.img /sdcard/Windows")
-
-                    executeCommand("su -mm -c umount /sdcard/Windows")
-                }*/
-
+            showWimFilesDialog(context, method)
 
         }
     }

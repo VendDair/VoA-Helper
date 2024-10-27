@@ -1,22 +1,13 @@
 package com.example.a52swoahelper
 
-import android.content.ContentResolver
 import android.content.Context
-import android.content.Intent
 import android.content.res.AssetManager
-import android.database.Cursor
-import android.net.Uri
-import android.provider.MediaStore
-import android.provider.OpenableColumns
-import android.util.Log
 import android.widget.Toast
-import androidx.activity.result.ActivityResultLauncher
 import com.example.a52swoahelper.Commands.Companion.executeCommand
 import java.io.File
 import java.io.FileOutputStream
 import java.io.IOException
 import java.io.InputStream
-import kotlin.collections.contains
 
 class Files {
 

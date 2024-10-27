@@ -36,7 +36,7 @@ class IndexDialog(private val context: Context) {
         itemsText.gravity = textGravity
 
 
-        editText.setOnKeyListener { v, keyCode, event ->
+        editText.setOnKeyListener { _, keyCode, event ->
             if (event.action == KeyEvent.ACTION_DOWN && keyCode == KeyEvent.KEYCODE_ENTER) {
                 // User pressed Enter
                 // Attempt to convert the text to an integer
