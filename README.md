@@ -46,7 +46,7 @@ So that's all. Now go make a cup of tea because this will take a few minutes. Wh
 
 ## FAQ
 - How do I boot back int Android? Flash boot.img from /sdcard/ in TWRP or launch the "Android" app on the Windows desktop
-- How do I uninstall Windows? [here]()
+- How do I uninstall Windows? [here](https://github.com/VendDair/VoA-Helper/blob/main/Guide%20stuff/UNINSTALL.md)
 
 
 
