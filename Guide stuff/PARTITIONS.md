@@ -1,1 +1,1 @@
-# How do partition the drives the right way
+# How do partition the partitions the right way
