@@ -20,7 +20,6 @@ class Commands {
         }
 
         fun executeCommand(command: String) {
-            //ProgressDialog(context).showDialog(command)
             try {
 
                 val process = Runtime.getRuntime().exec(command)
@@ -71,18 +70,21 @@ class Commands {
         }
 
         @SuppressLint("SdCardPath")
-        fun mountWindows(context: Context): String {
+        fun mountWindows(context: Context): Boolean {
             Files.createFolderIfFolderDontExists("/sdcard/Windows", context)
             if (!Files.checkIfFileExists("/data/local/tmp/mount.ntfs")) {
                 Files.copyAssetToLocal(context, "mount.ntfs")
                 executeCommand("su -c chmod 777 /data/local/tmp/mount.ntfs")
             }
-            val result = executeCommand(
-                "su -mm -c /data/local/tmp/mount.ntfs -o rw /dev/block/by-name/win /sdcard/Windows",
-                false
-            )
-            if (result != "0") return result
-            return "0"
+
+            if (!isWindowsMounted()) {
+                executeCommand(
+                    "su -mm -c /data/local/tmp/mount.ntfs -o rw /dev/block/by-name/win /sdcard/Windows",
+                    false
+                )
+                return true
+            } else executeCommand("su -mm -c umount /sdcard/Windows")
+            return false
         }
 
 
@@ -119,7 +121,10 @@ class Commands {
         }
 
         private fun fetchWimFileIndexes(path: String): String {
-            return executeCommand("su -c /data/local/tmp/wimlib-imagex info $path | grep -E \"Index|Name|Description|Display Name|Display Description\" | grep -v -E \"Boot Index|Product Name\"", true)
+            return executeCommand(
+                "su -c /data/local/tmp/wimlib-imagex info $path | grep -E \"Index|Name|Description|Display Name|Display Description\" | grep -v -E \"Boot Index|Product Name\"",
+                true
+            )
         }
 
         private fun showIndexDialog(context: Context, indexes: String, method: Int, path: String) {
