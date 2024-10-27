@@ -6,44 +6,62 @@ Voa Helper is an open source helper app for Samsung Galaxy A52s that lets the us
 Requirements:
 - Unlocked bootloader
 - Root
-- wim/esd file of windows
+- wim/esd file of Windows
 - Free space. Not less then 15GB
-- Backups because format data will be required
+- Backups because formatting data will be required
 - [All partitions set]()
 
-First step is to decide what windows you want.
+The first step is to decide what Windows version you want.
 There are two options:
-- Pre-made Images. They are faster and preconfigurate will all stuff needed
-- Custom Images. They are a bit slower to install but you'll need to configure it yourself
+- Pre-made images. They are faster and preconfigured with all necessary things (drivers).
+- Generic images. They are a bit slower to install, as you'll need to configure them yourself.
 
-So where do you get an pre-made image you may ask.
-Its simple. They are here:
-- [Windows 11 Pro 22h2 with Atlas OS](https://www.dropbox.com/scl/fi/cc9e3btnzs34bmnlbvpqe/win11_22h2_atlasos_desktop.wim?rlkey=35iuwtqzw4ofrut8d3z2m17w4&e=1&st=e7it86jw&dl=0)
+So where do you get a pre-made image you may ask.
+It's simple. They can be found here:
+- [Windows 11 Pro 22H2 with Atlas OS](https://www.dropbox.com/scl/fi/cc9e3btnzs34bmnlbvpqe/win11_22h2_atlasos_desktop.wim?rlkey=35iuwtqzw4ofrut8d3z2m17w4&e=1&st=e7it86jw&dl=0)
 
-And custom wim/esd are in ISO files in *source* folder.
+For generic Windows images, you can use [WoR Poject](https://worproject.com/esd)
 
 Now you need to open the [app](https://github.com/VendDair/VoA-Helper/releases) and exit it.
 
-It created 2 folder that are needed for it to function proprierly.
+It will have created 2 folders that are needed for it to function properly.
 
 Then [download](https://github.com/VendDair/VoA-Helper/releases) Driver.zip, pe.img and uefi.img
 
-Put Driver.zip and pe.img in WindowsInstall folder
+Put Driver.zip and pe.img in the WindowsInstall folder.
 
 <img src="https://github.com/VendDair/VoA-Helper/blob/main/Guide%20stuff/windowsinstall.png" alt="Image" width="300" />
 
-Then put uefi.img in UEFI folder
+Then put uefi.img in the UEFI folder
 
 <img src="https://github.com/VendDair/VoA-Helper/blob/main/Guide%20stuff/uefi.png" alt="Image" width="300" />
 
-After that go into the app and press "Install Windows" and press "yes"
+After that go into the app and press "Install Windows", then click on "yes"
 
-Then select your preffered method, select the wim/esd listed there (If you put another number then listed ones the app will crash) and select the index listed there you want
+Then select your preferred method, select the wim/esd listed there (If you put a number that is not listed, the app will crash) and select the index listed there you want
 
-So thats all. Now go make an tee because when you'll be back Windows will be already installed :)
+So that's all. Now go make a cup of tea because this will take a few minutes. When you're back, Windows should already be installed :)
 
-*If theres any issues please say that [here](https://t.me/a52sxq_uefi) with screenshots/pics and any other detail that can help fixing the problem*
+*If there are any issues please mention them [here](https://t.me/a52sxq_uefi) with screenshots/pics and any other details that can help fixing the problem*
 
 ## FAQ
-- How do I boot into android back? Flash boot.img from /sdcard/ in twrp or launch "Android" app on the Windows Desktop
-- How do I uninstall windows? [here]()
+- How do I boot back int Android? Flash boot.img from /sdcard/ in TWRP or launch the "Android" app on the Windows desktop
+- How do I uninstall Windows? [here]()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
