@@ -104,10 +104,10 @@ class MainActivity : ComponentActivity() {
                         UniversalDialog(this).showDialog(
                             title = "Select method",
                             buttons = listOf(
-                                Pair("Pre-made Image (fast)") {
+                                Pair("Pre-made Image\n(fast)") {
                                     Commands.installWindows(1)
                                 },
-                                Pair("Custom Image (slower)") {
+                                Pair("Custom Image\n(slower)") {
                                     Commands.installWindows( 2)
                                 }
                             )
