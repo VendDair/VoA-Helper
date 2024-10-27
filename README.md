@@ -28,7 +28,7 @@ It created 2 folder that are needed for it to function proprierly.
 
 Then [download](https://github.com/VendDair/VoA-Helper/releases) **Driver.zip**, **pe.img** and **uefi.img**
 
-Put **Driver.zip**,**pe.img** and **wim/esd file** in *WindowsInstall* folder
+Put **Driver.zip** and **pe.img** in *WindowsInstall* folder
 
 <img src="https://github.com/VendDair/VoA-Helper/blob/main/Guide%20stuff/windowsinstall.png" alt="Image" width="300" />
 
