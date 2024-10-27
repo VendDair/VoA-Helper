@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">VoAHelper</string>
+    <string name="a52s_woa_helper">A52s VoA Helper</string>
+    <string name="boot_to_windows">BOOT TO WINDOWS</string>
+    <string name="boot_to_windows_description">Flash UEFI and reboot to Windows in one click</string>
+    <string name="boot_to_windows_dialog">Boot to Windows?</string>
+
+    <string name="mount_windows">MOUNT WINDOWS</string>
+    <string name="mount_windows_description">Mounts Windows partition to /sdcard/Windows</string>
+    <string name="unmount_windows">UNMOUNT WINDOWS</string>
+    <string name="mount_windows_dialog">Mount Windows to /sdcard/Windows</string>
+    <string name="unmount_windows_dialog">Unmount Windows?</string>
+    <string name="unable_to_mount_windows">Unable to mount Windows</string>
+
+    <string name="backup_boot_image">BACKUP BOOT IMAGE</string>
+    <string name="backup_boot_image_description">Make an boot image backup to /sdcard/boot.img</string>
+    <string name="backup_boot_image_dialog">Backup Android Boot Image to /sdcard/boot.img?</string>
+
+    <string name="install_windows">INSTALL WINDOWS</string>
+    <string name="install_windows_description">Put wim/esd, Driver.zip, pe.img in /sdcard/WindowsInstall</string>
+    <string name="install_windows_dialog">Do you want to install Windows?\nONLY if you have the right partitions</string>
+
+    <string name="help">Help</string>
+    <string name="version">BETA_0.9.6_1</string>
+</resources>
