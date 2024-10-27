@@ -113,6 +113,7 @@ class MainActivity : ComponentActivity() {
                             )
                         )
                     },
+                    // test
                     Pair("GUIDE") {
 
                         val intent = Intent(
