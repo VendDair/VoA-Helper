@@ -31,14 +31,15 @@ class MainActivity : ComponentActivity() {
 
         bootIntoWindowsButton = findViewById(R.id.BootIntoWindowsButton)
         bootIntoWindowsButton.setOnClickListener {
-            val standartDialog = StandartDialog(this)
-            standartDialog.showDialog(
-                imageResId = R.drawable.win11logo,
-                text = getString(R.string.boot_to_windows_dialog),
-                onYesClick = {
-                    Commands.bootIntoWindows(this)
-                },
-                onNoClick = {}
+            UniversalDialog(this).showDialog(
+                image = R.drawable.win11logo,
+                title = getString(R.string.boot_to_windows_dialog),
+                buttons = listOf(
+                    Pair("YES") {
+                        Commands.bootIntoWindows(this)
+                    },
+                    Pair("NO") {}
+                )
             )
         }
 
@@ -48,28 +49,22 @@ class MainActivity : ComponentActivity() {
             mountWindows.text = getString(R.string.unmount_windows)
         }
         mountWindowsButton.setOnClickListener {
-            val standartDialog = StandartDialog(this)
-            standartDialog.showDialog(
-                imageResId = R.drawable.folder,
+            UniversalDialog(this).showDialog(
+                title = "Mount/Unmount Windows",
                 text = if (!Commands.isWindowsMounted()) getString(R.string.mount_windows_dialog) else getString(
                     R.string.unmount_windows_dialog
                 ),
-                onYesClick = {
-                    if (Commands.isWindowsMounted()) {
-                        Commands.executeCommand("su -mm -c umount /sdcard/Windows", true)
-
+                image = R.drawable.folder,
+                buttons = listOf(
+                    Pair("YES") {
+                        if (Commands.mountWindows(this)) {
+                            mountWindows.text = getString(R.string.unmount_windows)
+                            return@Pair
+                        }
                         mountWindows.text = getString(R.string.mount_windows)
-                        return@showDialog
-                    } else {
-                        Commands.mountWindows(this)
-
-
-                        mountWindows.text = getString(R.string.unmount_windows)
-                    }
-
-
-                },
-                onNoClick = {}
+                    },
+                    Pair("NO") {},
+                )
             )
         }
 
@@ -81,14 +76,16 @@ class MainActivity : ComponentActivity() {
 
         backupBootButton = findViewById(R.id.BackupBootButton)
         backupBootButton.setOnClickListener {
-            val standartDialog = StandartDialog(this)
-            standartDialog.showDialog(
-                imageResId = R.drawable.cd,
+            UniversalDialog(this).showDialog(
+                title = "Backup boot partition",
                 text = getString(R.string.backup_boot_image_dialog),
-                onYesClick = {
-                    Commands.backupBootImage()
-                },
-                onNoClick = {}
+                image = R.drawable.cd,
+                buttons = listOf(
+                    Pair("YES") {
+                        Commands.backupBootImage()
+                    },
+                    Pair("NO") {}
+                ),
             )
         }
 
