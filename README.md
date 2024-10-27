@@ -45,5 +45,5 @@ So thats all. Now go make an tee because when you'll be back Windows will be alr
 *If theres any issues please say that [here](https://t.me/a52sxq_uefi) with screenshots/pics and any other detail that can help fixing the problem*
 
 ## FAQ
-- How do I boot into android back? Flash boot.img from /sdcard/ in twrp or launch "Android" app on the Windows Desktop
+- How do I boot into android back? Flash boot.img from /sdcard/ in twrp or launch "Android" app in Windows Desktop
 - How do I uninstall windows? [here]()
