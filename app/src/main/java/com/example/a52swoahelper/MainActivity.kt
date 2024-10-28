@@ -30,11 +30,11 @@ class MainActivity : ComponentActivity() {
         Files.createFolderIfFolderDontExists("/sdcard/WindowsInstall", this)
         Files.createFolderIfFolderDontExists("/sdcard/UEFI", this)
 
-        settingsButton = findViewById(R.id.settings)
+/*        settingsButton = findViewById(R.id.settings)
         settingsButton.setOnClickListener {
             val intent = Intent(this, SettingsActivity::class.java)
             startActivity(intent)
-        }
+        }*/
 
         bootIntoWindowsButton = findViewById(R.id.BootIntoWindowsButton)
         bootIntoWindowsButton.setOnClickListener {
