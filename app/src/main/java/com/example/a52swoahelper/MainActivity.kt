@@ -17,7 +17,7 @@ class MainActivity : ComponentActivity() {
     private lateinit var helpButton: ImageView
     private lateinit var backupBootButton: LinearLayout
     private lateinit var installWindowsButton: LinearLayout
-    private lateinit var settingsButton: ImageView
+    //private lateinit var settingsButton: ImageView
 
     @SuppressLint("SdCardPath")
     override fun onCreate(savedInstanceState: Bundle?) {
