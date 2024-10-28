@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/gray"
+    android:padding="16dp">
+
+    <Button
+        android:id="@+id/downloadButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+
+        android:text="Download File"
+        tools:ignore="ButtonStyle,HardcodedText,PxUsage,RtlHardcoded" />
+
+    <Button
+        android:id="@+id/stopButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="20px"
+        android:text="stop"
+        tools:ignore="ButtonStyle,HardcodedText,PxUsage" />
+
+    <TextView
+        android:id="@+id/terminal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:paddingTop="20px"
+        android:paddingBottom="20px"
+        android:gravity="center"
+        android:background="@drawable/round_rectangle_lightgray"
+        android:textSize="25px"
+        android:text="Terminal Emulator"
+        tools:ignore="HardcodedText,PxUsage" />
+
+</LinearLayout>
+
