@@ -4,7 +4,6 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.widget.Button
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
@@ -15,7 +14,7 @@ class MainActivity : ComponentActivity() {
 
     private lateinit var bootIntoWindowsButton: LinearLayout
     private lateinit var mountWindowsButton: LinearLayout
-    private lateinit var helpButton: Button
+    private lateinit var helpButton: ImageView
     private lateinit var backupBootButton: LinearLayout
     private lateinit var installWindowsButton: LinearLayout
     private lateinit var settingsButton: ImageView

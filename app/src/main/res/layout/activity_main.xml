@@ -249,17 +249,21 @@
 
     </LinearLayout>
 
-    <Button
+    <ImageView
         android:id="@+id/HelpButton"
-        android:layout_width="0dp"
+        android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginStart="20dp"
         android:layout_marginTop="40dp"
         android:background="@drawable/round_rectangle_lightgray"
-        android:text="@string/help"
+        android:clickable="true"
+        android:contentDescription="settings"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:src="@drawable/help"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="MissingConstraints" />
+        tools:ignore="HardcodedText" />
 
     <TextView
         android:id="@+id/textView"
