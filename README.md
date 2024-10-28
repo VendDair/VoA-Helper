@@ -26,7 +26,7 @@ Now you need to open the [app](https://github.com/VendDair/VoA-Helper/releases) 
 
 It will have created 2 folders that are needed for it to function properly.
 
-Then [download](https://github.com/VendDair/VoA-Helper/releases) **Driver.zip**, **pe.img** and **uefi.img**
+Then [download](https://github.com/VendDair/VoA-Helper/releases/tag/FILES) **Driver.zip**, **pe.img** and **uefi.img**
 
 Put **Driver.zip**,**pe.img** and **wim/esd file** in *WindowsInstall* folder
 
