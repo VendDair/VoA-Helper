@@ -9,8 +9,9 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="520dp"
-        android:layout_height="match_parent"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:scaleType="centerCrop"
         android:src="@drawable/booba"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -20,7 +21,7 @@
 
     <LinearLayout
         android:id="@+id/InstallWindowsButton"
-        android:layout_width="371dp"
+        android:layout_width="0dp"
         android:layout_height="100dp"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
@@ -73,7 +74,7 @@
 
     <LinearLayout
         android:id="@+id/BootIntoWindowsButton"
-        android:layout_width="371dp"
+        android:layout_width="0dp"
         android:layout_height="100dp"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
@@ -126,7 +127,7 @@
 
     <TextView
         android:id="@+id/textView2"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="50dp"
         android:layout_marginStart="20dp"
         android:layout_marginTop="40dp"
@@ -143,7 +144,7 @@
 
     <LinearLayout
         android:id="@+id/MountWindowsButton"
-        android:layout_width="371dp"
+        android:layout_width="0dp"
         android:layout_height="100dp"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
@@ -196,7 +197,7 @@
 
     <LinearLayout
         android:id="@+id/BackupBootButton"
-        android:layout_width="371dp"
+        android:layout_width="0dp"
         android:layout_height="100dp"
         android:layout_marginStart="20dp"
 
@@ -249,7 +250,7 @@
 
     <Button
         android:id="@+id/HelpButton"
-        android:layout_width="85dp"
+        android:layout_width="0dp"
         android:layout_height="50dp"
         android:layout_marginStart="20dp"
         android:layout_marginTop="40dp"
@@ -261,7 +262,7 @@
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:layout_marginBottom="10dp"
@@ -272,7 +273,7 @@
 
     <TextView
         android:id="@+id/textView3"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginBottom="10dp"
