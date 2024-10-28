@@ -8,12 +8,12 @@
 
     <ImageView
         android:id="@+id/image"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="100px"
+        android:layout_height="100px"
         android:layout_gravity="center"
         android:layout_margin="10dp"
         android:src="@drawable/win11logo"
-        tools:ignore="ContentDescription" />
+        tools:ignore="ContentDescription,PxUsage" />
 
     <TextView
         android:id="@+id/title"
@@ -23,8 +23,8 @@
         android:layout_gravity="center"
         android:textStyle="bold"
         android:textColor="@color/white"
-        android:textSize="20sp"
-        tools:ignore="HardcodedText,SpUsage" />
+        android:textSize="60px"
+        tools:ignore="HardcodedText,PxUsage,SpUsage" />
 
     <ScrollView
         android:layout_width="match_parent"
@@ -44,8 +44,9 @@
                 android:layout_marginBottom="20dp"
                 android:gravity="center"
                 android:text="TextView"
+                android:textSize="40px"
                 android:textColor="@color/white"
-                tools:ignore="HardcodedText" />
+                tools:ignore="HardcodedText,PxUsage" />
 
             <LinearLayout
                 android:id="@+id/container"

@@ -46,6 +46,8 @@ class UniversalDialog(private val context: Context) {
         for (button in buttons) {
             val buttonView = Button(context)
             buttonView.text = button.first
+            buttonView.height = 50
+            buttonView.width = 100
             buttonView.setOnClickListener {
                 button.second()
                 dialog.dismiss()
