@@ -30,7 +30,6 @@ class UniversalDialog(private val context: Context) {
         val imaggeView: ImageView = dialogView.findViewById(R.id.image)
         val dialogText: TextView = dialogView.findViewById(R.id.title)
         val textText: TextView = dialogView.findViewById(R.id.text)
-        //val editText: EditText = dialogView.findViewById(R.id.index)
         val container: LinearLayout = dialogView.findViewById(R.id.container)
 
         dialogText.text = title
@@ -46,6 +45,7 @@ class UniversalDialog(private val context: Context) {
         for (button in buttons) {
             val buttonView = Button(context)
             buttonView.text = button.first
+            buttonView.textSize = 14.0f
             buttonView.setOnClickListener {
                 button.second()
                 dialog.dismiss()
