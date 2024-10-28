@@ -23,7 +23,7 @@
         android:layout_gravity="center"
         android:textStyle="bold"
         android:textColor="@color/white"
-        android:textSize="60px"
+        android:textSize="50px"
         tools:ignore="HardcodedText,PxUsage,SpUsage" />
 
     <ScrollView
@@ -44,7 +44,7 @@
                 android:layout_marginBottom="20dp"
                 android:gravity="center"
                 android:text="TextView"
-                android:textSize="40px"
+                android:textSize="32px"
                 android:textColor="@color/white"
                 tools:ignore="HardcodedText,PxUsage" />
 
