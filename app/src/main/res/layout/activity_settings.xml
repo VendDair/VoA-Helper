@@ -6,16 +6,30 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/bg"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:contentDescription="BG IMAGE"
         android:scaleType="centerCrop"
-        android:src="@drawable/booba"
+        android:src="@drawable/booba_upscaled"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="HardcodedText" />
+
+    <Button
+        android:id="@+id/set_femboy_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/round_rectangle_lightgray"
+        android:padding="20px"
+        android:text="Set Femboy wallpaper (not working)"
+        android:textSize="40px"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/bg"
+        tools:ignore="HardcodedText,PxUsage" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
