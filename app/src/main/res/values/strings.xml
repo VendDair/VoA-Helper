@@ -21,6 +21,6 @@
     <string name="install_windows_dialog">Do you want to install Windows?\nONLY if you have the right partitions</string>
 
     <string name="help">Help</string>
-    <string name="version">BETA_0.9.6_2</string>
+    <string name="version">BETA_0.9.6_3</string>
     <string name="github_repo">https://github.com/VendDair/VoA-Helper</string>
 </resources>
