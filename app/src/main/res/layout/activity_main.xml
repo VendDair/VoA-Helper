@@ -8,12 +8,12 @@
     android:orientation="vertical">
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/bg"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:contentDescription="BG IMAGE"
         android:scaleType="centerCrop"
-        android:src="@drawable/booba"
+        android:src="@drawable/booba_upscaled"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
