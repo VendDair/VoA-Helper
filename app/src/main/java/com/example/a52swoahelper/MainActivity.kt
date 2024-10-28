@@ -1,6 +1,7 @@
 package com.example.a52swoahelper
 
 import android.annotation.SuppressLint
+import android.app.DownloadManager
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
@@ -8,7 +9,6 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.activity.ComponentActivity
-import androidx.activity.enableEdgeToEdge
 
 class MainActivity : ComponentActivity() {
 
@@ -18,6 +18,7 @@ class MainActivity : ComponentActivity() {
     private lateinit var backupBootButton: LinearLayout
     private lateinit var installWindowsButton: LinearLayout
     //private lateinit var settingsButton: ImageView
+
 
     @SuppressLint("SdCardPath")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -30,11 +31,11 @@ class MainActivity : ComponentActivity() {
         Files.createFolderIfFolderDontExists("/sdcard/WindowsInstall", this)
         Files.createFolderIfFolderDontExists("/sdcard/UEFI", this)
 
-/*        settingsButton = findViewById(R.id.settings)
+        settingsButton = findViewById(R.id.settings)
         settingsButton.setOnClickListener {
             val intent = Intent(this, SettingsActivity::class.java)
             startActivity(intent)
-        }*/
+        }
 
         bootIntoWindowsButton = findViewById(R.id.BootIntoWindowsButton)
         bootIntoWindowsButton.setOnClickListener {

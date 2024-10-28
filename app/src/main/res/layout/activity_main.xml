@@ -310,7 +310,7 @@
         app:layout_constraintStart_toEndOf="@+id/textView"
         tools:ignore="PxUsage" />
 
-<!--    <ImageView
+        <ImageView
         android:id="@+id/settings"
         android:layout_width="50dp"
         android:layout_height="0dp"
@@ -326,6 +326,6 @@
         app:layout_constraintHeight_percent="0.06"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintWidth_percent="0.08"
-        tools:ignore="HardcodedText" />-->
+        tools:ignore="HardcodedText" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
