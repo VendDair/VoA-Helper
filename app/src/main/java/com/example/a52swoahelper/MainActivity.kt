@@ -22,7 +22,6 @@ class MainActivity : ComponentActivity() {
     @SuppressLint("SdCardPath")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
         setContentView(R.layout.activity_main)
 
         Commands.context = this
