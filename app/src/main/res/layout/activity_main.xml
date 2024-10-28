@@ -21,106 +21,175 @@
         tools:ignore="HardcodedText" />
 
     <LinearLayout
-        android:id="@+id/InstallWindowsButton"
-        android:layout_width="0dp"
-        android:layout_height="100dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginBottom="280dp"
-
-        android:background="@drawable/round_rectangle_gray"
-        android:clickable="true"
-        android:clipToOutline="true"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
-
-        <ImageView
-            android:id="@+id/InstallWindowsImage"
-            android:layout_width="71dp"
-            android:layout_height="wrap_content"
-            android:contentDescription="Win11 logo"
-            android:padding="15dp"
-            android:src="@drawable/installer"
-            tools:ignore="HardcodedText" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/InstallWindowsLabel"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:gravity="bottom"
-                android:text="@string/install_windows"
-                android:textColor="@color/white"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/InstallWindowsDescription"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:text="@string/install_windows_description"
-                android:textColor="@color/light_gray"
-                android:textSize="12sp"
-                android:textStyle="italic" />
-
-        </LinearLayout>
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/BootIntoWindowsButton"
-        android:layout_width="0dp"
-        android:layout_height="100dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="40dp"
-
-        android:background="@drawable/round_rectangle_gray"
-        android:clickable="true"
-        android:clipToOutline="true"
-        android:orientation="horizontal"
+        android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent">
 
-        <ImageView
-            android:id="@+id/BootIntoWindowsImage"
-            android:layout_width="71dp"
-            android:layout_height="wrap_content"
-            android:contentDescription="Win11 logo"
-            android:padding="20dp"
-            android:src="@drawable/win11logo"
-            tools:ignore="HardcodedText" />
+        <LinearLayout
+            android:id="@+id/InstallWindowsButton"
+            android:layout_width="match_parent"
+            android:layout_height="250px"
+
+            android:layout_marginBottom="40px"
+            android:background="@drawable/round_rectangle_gray"
+            android:clickable="true"
+            android:clipToOutline="true"
+            android:orientation="horizontal"
+            app:layout_constraintHeight_percent="0.12"
+            tools:ignore="PxUsage">
+
+            <ImageView
+                android:id="@+id/InstallWindowsImage"
+                android:layout_width="150px"
+                android:layout_height="wrap_content"
+                android:contentDescription="Win11 logo"
+                android:padding="25px"
+                android:src="@drawable/installer"
+                tools:ignore="HardcodedText" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/InstallWindowsLabel"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:gravity="bottom"
+                    android:text="@string/install_windows"
+                    android:textColor="@color/white"
+                    android:textSize="36px"
+                    android:textStyle="bold"
+                    tools:ignore="PxUsage" />
+
+                <TextView
+                    android:id="@+id/InstallWindowsDescription"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:text="@string/install_windows_description"
+                    android:textColor="@color/light_gray"
+                    android:textSize="32px"
+                    android:textStyle="italic"
+                    tools:ignore="PxUsage" />
+
+            </LinearLayout>
+
+        </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/MountWindowsButton"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:layout_height="250px"
 
-            <TextView
-                android:id="@+id/BootIntoWindowsLabel"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:gravity="bottom"
-                android:text="@string/boot_to_windows"
-                android:textColor="@color/white"
-                android:textStyle="bold" />
+            android:layout_marginBottom="40px"
+            android:background="@drawable/round_rectangle_gray"
+            android:clickable="true"
+            android:clipToOutline="true"
+            android:orientation="horizontal"
+            app:layout_constraintHeight_percent="0.12"
+            tools:ignore="PxUsage">
 
-            <TextView
-                android:id="@+id/BootIntoWindowsDescription"
+            <ImageView
+                android:id="@+id/MountWindowsImage"
+                android:layout_width="150px"
+                android:layout_height="wrap_content"
+                android:contentDescription="Win11 logo"
+                android:padding="35px"
+                android:src="@drawable/folder"
+                tools:ignore="HardcodedText" />
+
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:text="@string/boot_to_windows_description"
-                android:textColor="@color/light_gray"
-                android:textSize="12sp"
-                android:textStyle="italic" />
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/MountWindowsLabel"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:gravity="bottom"
+                    android:text="@string/mount_windows"
+                    android:textColor="@color/white"
+                    android:textSize="36px"
+                    android:textStyle="bold"
+                    tools:ignore="PxUsage" />
+
+                <TextView
+                    android:id="@+id/MountWindowsDescription"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:text="@string/mount_windows_description"
+                    android:textColor="@color/light_gray"
+                    android:textSize="32px"
+                    android:textStyle="italic"
+                    tools:ignore="PxUsage" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/BootIntoWindowsButton"
+            android:layout_width="match_parent"
+            android:layout_height="250px"
+
+            android:background="@drawable/round_rectangle_gray"
+            android:clickable="true"
+            android:clipToOutline="true"
+            android:orientation="horizontal"
+            app:layout_constraintHeight_percent="0.12"
+            tools:ignore="PxUsage">
+
+            <ImageView
+                android:id="@+id/BootIntoWindowsImage"
+                android:layout_width="150px"
+                android:layout_height="wrap_content"
+                android:contentDescription="Win11 logo"
+                android:padding="35px"
+                android:src="@drawable/win11logo"
+                tools:ignore="HardcodedText,PxUsage" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/BootIntoWindowsLabel"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:gravity="bottom"
+                    android:text="@string/boot_to_windows"
+                    android:textColor="@color/white"
+                    android:textSize="36px"
+                    android:textStyle="bold"
+                    tools:ignore="PxUsage" />
+
+                <TextView
+                    android:id="@+id/BootIntoWindowsDescription"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:text="@string/boot_to_windows_description"
+                    android:textColor="@color/light_gray"
+                    android:textSize="32px"
+                    android:textStyle="italic"
+                    tools:ignore="PxUsage" />
+
+            </LinearLayout>
 
         </LinearLayout>
 
@@ -129,7 +198,7 @@
     <TextView
         android:id="@+id/textView2"
         android:layout_width="0dp"
-        android:layout_height="50dp"
+        android:layout_height="0dp"
         android:layout_marginStart="20dp"
         android:layout_marginTop="40dp"
         android:layout_marginEnd="20dp"
@@ -137,69 +206,17 @@
         android:gravity="center"
         android:text="@string/a52s_woa_helper"
         android:textColor="@color/white"
-        android:textSize="20sp"
+        android:textSize="40px"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.06"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="MissingConstraints" />
-
-    <LinearLayout
-        android:id="@+id/MountWindowsButton"
-        android:layout_width="0dp"
-        android:layout_height="100dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginBottom="160dp"
-
-        android:background="@drawable/round_rectangle_gray"
-        android:clickable="true"
-        android:clipToOutline="true"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
-
-        <ImageView
-            android:id="@+id/MountWindowsImage"
-            android:layout_width="71dp"
-            android:layout_height="wrap_content"
-            android:contentDescription="Win11 logo"
-            android:padding="20dp"
-            android:src="@drawable/folder"
-            tools:ignore="HardcodedText" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/MountWindowsLabel"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:gravity="bottom"
-                android:text="@string/mount_windows"
-                android:textColor="@color/white"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/MountWindowsDescription"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:text="@string/mount_windows_description"
-                android:textColor="@color/light_gray"
-                android:textSize="12sp"
-                android:textStyle="italic" />
-
-        </LinearLayout>
-
-    </LinearLayout>
+        tools:ignore="MissingConstraints,PxUsage" />
 
     <LinearLayout
         android:id="@+id/BackupBootButton"
         android:layout_width="0dp"
-        android:layout_height="100dp"
+        android:layout_height="250px"
         android:layout_marginStart="20dp"
 
         android:layout_marginTop="160dp"
@@ -209,15 +226,17 @@
         android:clipToOutline="true"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.12"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="PxUsage">
 
         <ImageView
             android:id="@+id/BackupBootImage"
-            android:layout_width="71dp"
-            android:layout_height="wrap_content"
+            android:layout_width="150px"
+            android:layout_height="match_parent"
             android:contentDescription="Win11 logo"
-            android:padding="15dp"
+            android:padding="25px"
             android:src="@drawable/cd"
             tools:ignore="HardcodedText" />
 
@@ -229,11 +248,14 @@
             <TextView
                 android:id="@+id/BackupBootLabel"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="0dp"
+                android:layout_weight="1"
                 android:gravity="bottom"
                 android:text="@string/backup_boot_image"
                 android:textColor="@color/white"
-                android:textStyle="bold" />
+                android:textSize="36px"
+                android:textStyle="bold"
+                tools:ignore="PxUsage" />
 
             <TextView
                 android:id="@+id/BackupBootDescription"
@@ -242,8 +264,9 @@
                 android:layout_weight="1"
                 android:text="@string/backup_boot_image_description"
                 android:textColor="@color/light_gray"
-                android:textSize="12sp"
-                android:textStyle="italic" />
+                android:textSize="32px"
+                android:textStyle="italic"
+                tools:ignore="PxUsage" />
 
         </LinearLayout>
 
@@ -252,7 +275,7 @@
     <ImageView
         android:id="@+id/HelpButton"
         android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_height="0dp"
         android:layout_marginStart="20dp"
         android:layout_marginTop="40dp"
         android:background="@drawable/round_rectangle_lightgray"
@@ -261,46 +284,54 @@
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
         android:src="@drawable/help"
+        app:layout_constraintHeight_percent="0.06"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintWidth_percent="0.08"
         tools:ignore="HardcodedText" />
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
+        android:layout_marginStart="30dp"
         android:layout_marginBottom="10dp"
         android:text="@string/version"
         android:textColor="@color/purple_700"
+        android:textSize="35px"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="PxUsage" />
 
     <TextView
         android:id="@+id/textView3"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:textSize="38px"
         android:layout_marginStart="20dp"
         android:layout_marginBottom="10dp"
         android:text="@string/github_repo"
         android:textColor="@color/purple_700"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/textView" />
+        app:layout_constraintStart_toEndOf="@+id/textView"
+        tools:ignore="PxUsage" />
 
     <ImageView
         android:id="@+id/settings"
-        android:clickable="true"
         android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_height="0dp"
         android:layout_marginTop="40dp"
         android:layout_marginEnd="20dp"
-        android:paddingRight="10dp"
-        android:paddingLeft="10dp"
         android:background="@drawable/round_rectangle_lightgray"
-        android:src="@drawable/settings"
+        android:clickable="true"
         android:contentDescription="settings"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:src="@drawable/settings"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.06"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintWidth_percent="0.08"
         tools:ignore="HardcodedText" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
