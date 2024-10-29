@@ -165,19 +165,12 @@ class Commands {
                     context
                 )
             ) return
-
-            if (!Files.checkIfFileExists("/data/local/tmp/mkfs.fat")) {
-                Files.copyAssetToLocal(context, "mkfs.fat")
-                executeCommand("su -c chmod 777 /data/local/tmp/mkfs.fat")
-            }
-            if (!Files.checkIfFileExists("/data/local/tmp/mkfs.ntfs")) {
-                Files.copyAssetToLocal(context, "mkfs.ntfs")
-                executeCommand("su -c chmod 777 /data/local/tmp/mkfs.ntfs")
-            }
-            if (!Files.checkIfFileExists("/data/local/tmp/wimlib-imagex")) {
-                Files.copyAssetToLocal(context, "wimlib-imagex")
-                executeCommand("su -c chmod 777 /data/local/tmp/wimlib-imagex")
-            }
+            if (Files.alertUserIfFileDoesntExist(
+                    "Driver.zip",
+                    "/sdcard/WindowsInstall/",
+                    context
+                )
+            ) return
 
             showWimFilesDialog(context, method)
 

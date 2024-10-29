@@ -29,7 +29,7 @@ class DownloadDialog(private val context: Context) {
         // Create the AlertDialog
         val dialogBuilder = AlertDialog.Builder(context)
             .setView(dialogView)
-            .setCancelable(true)
+            .setCancelable(false)
 
         stopButton = dialogView.findViewById(R.id.stopButton)
         stopButton.setOnClickListener {
