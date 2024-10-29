@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/other_gray"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:id="@+id/winpeButton"
+            android:layout_width="match_parent"
+            android:layout_height="250px"
+
+            android:layout_marginBottom="40px"
+            android:background="@drawable/round_rectangle_gray"
+            android:clickable="true"
+            android:clipToOutline="true"
+            android:orientation="horizontal"
+            app:layout_constraintHeight_percent="0.12"
+            tools:ignore="PxUsage">
+
+            <ImageView
+                android:id="@+id/winpeImage"
+                android:layout_width="150px"
+                android:layout_height="wrap_content"
+                android:contentDescription="Win11 logo"
+                android:padding="25px"
+                android:src="@drawable/winpe"
+                tools:ignore="HardcodedText" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/winpeLabel"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:gravity="bottom"
+                    android:text="DOWNLOAD WINPE"
+                    android:textColor="@color/white"
+                    android:textSize="36px"
+                    android:textStyle="bold"
+                    tools:ignore="HardcodedText,PxUsage" />
+
+                <TextView
+                    android:id="@+id/winpeDescription"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:text="Download the latest winpe"
+                    android:textColor="@color/light_gray"
+                    android:textSize="32px"
+                    android:textStyle="italic"
+                    tools:ignore="HardcodedText,PxUsage" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/driversButton"
+            android:layout_width="match_parent"
+            android:layout_height="250px"
+
+            android:background="@drawable/round_rectangle_gray"
+            android:clickable="true"
+            android:clipToOutline="true"
+            android:orientation="horizontal"
+            app:layout_constraintHeight_percent="0.12"
+            tools:ignore="PxUsage">
+
+            <ImageView
+                android:id="@+id/driversImage"
+                android:layout_width="150px"
+                android:layout_height="wrap_content"
+                android:contentDescription="Win11 logo"
+                android:padding="30px"
+                android:src="@drawable/drivers"
+                tools:ignore="HardcodedText,PxUsage" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/driversLabel"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:gravity="bottom"
+                    android:text="DOWNLOAD DRIVERS"
+                    android:textColor="@color/white"
+                    android:textSize="36px"
+                    android:textStyle="bold"
+                    tools:ignore="HardcodedText,PxUsage" />
+
+                <TextView
+                    android:id="@+id/BootIntoWindowsDescription"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:text="Download latest drivers"
+                    android:textColor="@color/light_gray"
+                    android:textSize="32px"
+                    android:textStyle="italic"
+                    tools:ignore="HardcodedText,PxUsage" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

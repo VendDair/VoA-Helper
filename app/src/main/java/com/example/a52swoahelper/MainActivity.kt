@@ -5,10 +5,13 @@ import android.app.DownloadManager
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.activity.ComponentActivity
+import com.example.a52swoahelper.Commands.Companion.context
+import com.example.a52swoahelper.Commands.Companion.executeCommand
 
 class MainActivity : ComponentActivity() {
 
@@ -17,8 +20,24 @@ class MainActivity : ComponentActivity() {
     private lateinit var helpButton: ImageView
     private lateinit var backupBootButton: LinearLayout
     private lateinit var installWindowsButton: LinearLayout
+    private lateinit var downloadButton: LinearLayout
     //private lateinit var settingsButton: ImageView
 
+    fun copyBinaries() {
+        val binaries = listOf(
+            "mkfs.fat",
+            "mkfs.ntfs",
+            "mount.ntfs",
+            "wimlib-imagex"
+        )
+
+        binaries.forEach { binary ->
+            if (!Files.checkIfFileExists("/data/local/tmp/$binary")) {
+                Files.copyAssetToLocal(context, binary)
+                executeCommand("su -c chmod 777 /data/local/tmp/$binary")
+            }
+        }
+    }
 
     @SuppressLint("SdCardPath")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -31,9 +50,16 @@ class MainActivity : ComponentActivity() {
         Files.createFolderIfFolderDontExists("/sdcard/WindowsInstall", this)
         Files.createFolderIfFolderDontExists("/sdcard/UEFI", this)
 
-        settingsButton = findViewById(R.id.settings)
+        /*val settingsButton = findViewById<Button>(R.id.settings)
         settingsButton.setOnClickListener {
             val intent = Intent(this, SettingsActivity::class.java)
+            startActivity(intent)
+        }*/
+        copyBinaries()
+
+        downloadButton = findViewById(R.id.DownloadButton)
+        downloadButton.setOnClickListener {
+            val intent = Intent(this, DownloadActivity::class.java)
             startActivity(intent)
         }
 
