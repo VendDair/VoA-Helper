@@ -4,21 +4,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/black"
+    android:background="@color/cardview_dark_background"
     android:orientation="vertical">
 
-    <ImageView
+<!--    <ImageView
         android:id="@+id/bg"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:contentDescription="BG IMAGE"
         android:scaleType="centerCrop"
-        android:src="@drawable/booba_upscaled"
+        android:src="@color/material_dynamic_neutral0"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="HardcodedText" />
+        tools:ignore="HardcodedText" />-->
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -297,7 +297,7 @@
         android:layout_marginStart="30dp"
         android:layout_marginBottom="10dp"
         android:text="@string/version"
-        android:textColor="@color/purple_700"
+        android:textColor="@color/white"
         android:textSize="35px"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -311,7 +311,7 @@
         android:layout_marginStart="20dp"
         android:layout_marginBottom="10dp"
         android:text="@string/github_repo"
-        android:textColor="@color/purple_700"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/textView"
         tools:ignore="PxUsage" />
