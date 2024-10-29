@@ -3,6 +3,7 @@ package com.example.a52swoahelper
 import android.os.Bundle
 import android.widget.LinearLayout
 import androidx.activity.ComponentActivity
+import androidx.activity.enableEdgeToEdge
 
 class DownloadActivity: ComponentActivity() {
 
@@ -11,6 +12,7 @@ class DownloadActivity: ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        enableEdgeToEdge()
         setContentView(R.layout.activity_download)
 
         winpeButton = findViewById(R.id.winpeButton)

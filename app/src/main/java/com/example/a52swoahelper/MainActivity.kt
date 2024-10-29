@@ -10,6 +10,7 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.activity.ComponentActivity
+import androidx.activity.enableEdgeToEdge
 import com.example.a52swoahelper.Commands.Companion.context
 import com.example.a52swoahelper.Commands.Companion.executeCommand
 
@@ -42,6 +43,7 @@ class MainActivity : ComponentActivity() {
     @SuppressLint("SdCardPath")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        enableEdgeToEdge()
         setContentView(R.layout.activity_main)
         
 

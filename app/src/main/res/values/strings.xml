@@ -26,4 +26,5 @@
     <string name="title_activity_settings">SettingsActivity</string>
     <string name="download_label">DOWNLOAD MANAGER</string>
     <string name="download_description">Download latest files for the app</string>
+    <string name="title_activity_main2">MainActivity2</string>
 </resources>
