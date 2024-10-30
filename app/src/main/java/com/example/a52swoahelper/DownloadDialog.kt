@@ -21,29 +21,40 @@ class DownloadDialog(private val context: Context) {
     private lateinit var coroutineScope: CoroutineScope
     private lateinit var stopButton: Button
     private lateinit var process: Process
+    private lateinit var fileName: String
+
+    fun cancelDownloading() {
+        process.destroy()
+        coroutineScope.cancel()
+        Commands.executeCommand("su -c rm /sdcard/WindowsInstall/$fileName")
+        dialog.dismiss()
+    }
 
     fun showDialog(fileName: String) {
+        this.fileName = fileName
         // Inflate the custom layout
         val dialogView: View = LayoutInflater.from(context).inflate(R.layout.download_dialog, null)
 
         // Create the AlertDialog
         val dialogBuilder = AlertDialog.Builder(context)
             .setView(dialogView)
-            .setCancelable(false)
+            .setCancelable(true)
 
         stopButton = dialogView.findViewById(R.id.stopButton)
         stopButton.setOnClickListener {
-            process.destroy()
-            coroutineScope.cancel()
-            Commands.executeCommand("su -c rm /sdcard/WindowsInstall/$fileName")
-            dialog.dismiss()
+            cancelDownloading()
         }
 
         terminalTextView = dialogView.findViewById(R.id.terminal) // Assuming you have a TextView in your layout
         val downloadButton: Button = dialogView.findViewById(R.id.downloadButton)
         downloadButton.setOnClickListener {
-            // Start the command execution
-            executeCommand("su -c curl -L -o /sdcard/WindowsInstall/$fileName https://github.com/VendDair/VoA-Helper/releases/download/FILES/$fileName")
+            executeCommand("su -c /data/local/tmp/curl -L -o /sdcard/WindowsInstall/$fileName https://github.com/VendDair/VoA-Helper/releases/download/FILES/$fileName")
+//            executeCommand("su -c /data/local/tmp/busybox wget --no-check-certificate -P /sdcard/Download -O $fileName https://github.com/VendDair/VoA-Helper/releases/download/FILES/$fileName")
+
+        }
+
+        dialogBuilder.setOnCancelListener {
+            cancelDownloading()
         }
 
         // Create and show the dialog
