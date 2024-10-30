@@ -67,11 +67,13 @@ class MainActivity : ComponentActivity() {
         Files.createFolderIfFolderDontExists("/sdcard/WindowsInstall", this)
         Files.createFolderIfFolderDontExists("/sdcard/UEFI", this)
 
-        /*val settingsButton = findViewById<Button>(R.id.settings)
+        val settingsButton = findViewById<Button>(R.id.settings)
         settingsButton.setOnClickListener {
             val intent = Intent(this, SettingsActivity::class.java)
             startActivity(intent)
-        }*/
+        }
+
+
         copyBinaries()
 
         downloadButton = findViewById(R.id.DownloadButton)
