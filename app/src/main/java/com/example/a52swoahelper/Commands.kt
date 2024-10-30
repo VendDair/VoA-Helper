@@ -74,11 +74,13 @@ class Commands {
         @SuppressLint("SdCardPath")
         fun mountWindows(settingsPreferences: SharedPreferences): Boolean {
             val mountFolder = if (settingsPreferences.getBoolean("mountToMnt", false)) "/mnt/sdcard/Windows" else "/sdcard/Windows"
+            settingsPreferences.edit().putString("mountFolder", mountFolder).apply()
             if (!isWindowsMounted()) {
                 executeCommand(
                     "su -mm -c /data/local/tmp/mount.ntfs -o rw /dev/block/by-name/win $mountFolder",
                     false
                 )
+                InformationDialog(settingsPreferences).showDialog("Windows was mounted to ${settingsPreferences.getString("mountFolder", "/sdcard/Windows")}")
                 return true
             } else executeCommand("su -mm -c umount /dev/block/by-name/win")
             return false

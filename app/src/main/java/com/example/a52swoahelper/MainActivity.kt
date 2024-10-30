@@ -111,6 +111,7 @@ class MainActivity : ComponentActivity() {
                     Pair("YES") {
                         if (Commands.mountWindows(settingsPreferences)) {
                             mountWindows.text = getString(R.string.unmount_windows)
+
                             return@Pair
                         }
                         mountWindows.text = getString(R.string.mount_windows)
