@@ -2,6 +2,8 @@
 
 Voa Helper is an open source helper app for Samsung Galaxy A52s that lets the user install and manage windows on his phone
 
+<img src="https://github.com/VendDair/VoA-Helper/blob/main/Guide%20stuff/app_screenshot.jpg" alt="Image" width="300" />
+
 ### How to use the install feature
 Requirements:
 - Unlocked bootloader
