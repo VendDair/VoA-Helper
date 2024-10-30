@@ -8,7 +8,7 @@
     <string name="mount_windows">MOUNT WINDOWS</string>
     <string name="mount_windows_description">Mounts Windows partition to /sdcard/Windows</string>
     <string name="unmount_windows">UNMOUNT WINDOWS</string>
-    <string name="mount_windows_dialog">Mount Windows to /sdcard/Windows</string>
+    <string name="mount_windows_dialog">Mount Windows?</string>
     <string name="unmount_windows_dialog">Unmount Windows?</string>
     <string name="unable_to_mount_windows">Unable to mount Windows</string>
 

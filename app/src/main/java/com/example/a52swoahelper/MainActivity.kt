@@ -1,19 +1,14 @@
 package com.example.a52swoahelper
 
 import android.annotation.SuppressLint
-import android.app.DownloadManager
+import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.util.DisplayMetrics
-import android.view.ViewGroup
-import android.view.WindowManager
-import android.view.WindowMetrics
-import android.widget.Button
 import android.widget.ImageView
 import android.widget.LinearLayout
-import android.widget.LinearLayout.LayoutParams
 import android.widget.TextView
+import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.enableEdgeToEdge
 import com.example.a52swoahelper.Commands.Companion.context
@@ -66,6 +61,11 @@ class MainActivity : ComponentActivity() {
 
         Files.createFolderIfFolderDontExists("/sdcard/WindowsInstall", this)
         Files.createFolderIfFolderDontExists("/sdcard/UEFI", this)
+        Files.createFolderIfFolderDontExists("/sdcard/Windows", this)
+
+        copyBinaries()
+
+        val settingsPreferences = getSharedPreferences("settings", Context.MODE_PRIVATE)
 
         settingsButton = findViewById(R.id.settings)
         settingsButton.setOnClickListener {
@@ -74,7 +74,6 @@ class MainActivity : ComponentActivity() {
         }
 
 
-        copyBinaries()
 
         downloadButton = findViewById(R.id.DownloadButton)
         downloadButton.setOnClickListener {
@@ -110,7 +109,7 @@ class MainActivity : ComponentActivity() {
                 image = R.drawable.folder,
                 buttons = listOf(
                     Pair("YES") {
-                        if (Commands.mountWindows(this)) {
+                        if (Commands.mountWindows(settingsPreferences)) {
                             mountWindows.text = getString(R.string.unmount_windows)
                             return@Pair
                         }

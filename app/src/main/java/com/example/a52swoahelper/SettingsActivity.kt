@@ -1,11 +1,16 @@
 package com.example.a52swoahelper
 
+import android.annotation.SuppressLint
+import android.content.Context
 import android.os.Bundle
-import android.widget.Button
+import android.widget.Switch
 import androidx.activity.ComponentActivity
 import androidx.activity.enableEdgeToEdge
 
+@SuppressLint("UseSwitchCompatOrMaterialCode")
 class SettingsActivity : ComponentActivity() {
+
+    private lateinit var mntSdcardSwitch: Switch
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -13,16 +18,21 @@ class SettingsActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContentView(R.layout.activity_settings)
 
-        /*downloadPeButton = findViewById(R.id.download_pe_button)
-        downloadDriversButton = findViewById(R.id.download_drivers_button)
+        val settingsPreferences = getSharedPreferences("settings", Context.MODE_PRIVATE)
+        val editor = settingsPreferences.edit()
 
-        downloadPeButton.setOnClickListener {
-            DownloadDialog(this).showDialog("pe.img")
+        mntSdcardSwitch = findViewById(R.id.MountToMnt)
+
+
+        if (settingsPreferences.getBoolean("mountToMnt", false))
+            mntSdcardSwitch.isChecked = true
+
+        mntSdcardSwitch.setOnClickListener {
+
+            editor.putBoolean("mountToMnt", !settingsPreferences.getBoolean("mountToMnt", false))
+
+            editor.apply()
         }
-
-        downloadDriversButton.setOnClickListener {
-            DownloadDialog(this).showDialog("Driver.zip")
-        }*/
 
     }
 

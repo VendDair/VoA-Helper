@@ -2,7 +2,9 @@ package com.example.a52swoahelper
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.content.SharedPreferences
 import android.view.Gravity
+import android.widget.Toast
 
 
 class Commands {
@@ -70,20 +72,15 @@ class Commands {
         }
 
         @SuppressLint("SdCardPath")
-        fun mountWindows(context: Context): Boolean {
-            Files.createFolderIfFolderDontExists("/sdcard/Windows", context)
-            if (!Files.checkIfFileExists("/data/local/tmp/mount.ntfs")) {
-                Files.copyAssetToLocal(context, "mount.ntfs")
-                executeCommand("su -c chmod 777 /data/local/tmp/mount.ntfs")
-            }
-
+        fun mountWindows(settingsPreferences: SharedPreferences): Boolean {
+            val mountFolder = if (settingsPreferences.getBoolean("mountToMnt", false)) "/mnt/sdcard/Windows" else "/sdcard/Windows"
             if (!isWindowsMounted()) {
                 executeCommand(
-                    "su -mm -c /data/local/tmp/mount.ntfs -o rw /dev/block/by-name/win /sdcard/Windows",
+                    "su -mm -c /data/local/tmp/mount.ntfs -o rw /dev/block/by-name/win $mountFolder",
                     false
                 )
                 return true
-            } else executeCommand("su -mm -c umount /sdcard/Windows")
+            } else executeCommand("su -mm -c umount /dev/block/by-name/win")
             return false
         }
 
