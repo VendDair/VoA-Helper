@@ -29,7 +29,7 @@ class MainActivity : ComponentActivity() {
     private lateinit var downloadButton: LinearLayout
 
     private lateinit var versionView: TextView
-    //private lateinit var settingsButton: ImageView
+    private lateinit var settingsButton: ImageView
 
     fun copyBinaries() {
         val binaries = listOf(
@@ -67,7 +67,7 @@ class MainActivity : ComponentActivity() {
         Files.createFolderIfFolderDontExists("/sdcard/WindowsInstall", this)
         Files.createFolderIfFolderDontExists("/sdcard/UEFI", this)
 
-        val settingsButton = findViewById<Button>(R.id.settings)
+        settingsButton = findViewById(R.id.settings)
         settingsButton.setOnClickListener {
             val intent = Intent(this, SettingsActivity::class.java)
             startActivity(intent)

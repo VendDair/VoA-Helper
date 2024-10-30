@@ -3,14 +3,14 @@ package com.example.a52swoahelper
 import android.os.Bundle
 import android.widget.Button
 import androidx.activity.ComponentActivity
+import androidx.activity.enableEdgeToEdge
 
 class SettingsActivity : ComponentActivity() {
 
-    private lateinit var downloadPeButton: Button
-    private lateinit var downloadDriversButton: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        enableEdgeToEdge()
         setContentView(R.layout.activity_settings)
 
         /*downloadPeButton = findViewById(R.id.download_pe_button)

@@ -24,7 +24,7 @@
     <string name="version">BETA_0.9.6_5</string>
     <string name="github_repo">https://github.com/VendDair/VoA-Helper</string>
     <string name="title_activity_settings">SettingsActivity</string>
+    <string name="title_activity_download">DownloadActivity</string>
     <string name="download_label">DOWNLOAD MANAGER</string>
     <string name="download_description">Download latest files for the app</string>
-    <string name="title_activity_main2">MainActivity2</string>
 </resources>
