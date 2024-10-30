@@ -337,48 +337,47 @@
         app:layout_constraintWidth_percent="0.08"
         tools:ignore="HardcodedText" />
 
+
     <TextView
         android:id="@+id/textView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="44dp"
         android:text="@string/version"
         android:textColor="@color/black"
         android:textSize="35px"
+        app:layout_constraintBottom_toTopOf="@+id/textView2"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
         tools:ignore="PxUsage" />
 
     <TextView
         android:id="@+id/textView3"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="44dp"
         android:layout_marginEnd="20dp"
         android:text="@string/github_repo"
         android:textColor="@color/black"
         android:textSize="38px"
+        app:layout_constraintBottom_toTopOf="@+id/textView2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
         tools:ignore="PxUsage" />
 
-<!--        <ImageView
-        android:id="@+id/settings"
-        android:layout_width="50dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="40dp"
-        android:layout_marginEnd="20dp"
-        android:background="@drawable/round_rectangle_lightgray"
-        android:clickable="true"
-        android:contentDescription="settings"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
-        android:src="@drawable/settings"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHeight_percent="0.06"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintWidth_percent="0.08"
-        tools:ignore="HardcodedText" />-->
+    <!--        <ImageView
+            android:id="@+id/settings"
+            android:layout_width="50dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginEnd="20dp"
+            android:background="@drawable/round_rectangle_lightgray"
+            android:clickable="true"
+            android:contentDescription="settings"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:src="@drawable/settings"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHeight_percent="0.06"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintWidth_percent="0.08"
+            tools:ignore="HardcodedText" />-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

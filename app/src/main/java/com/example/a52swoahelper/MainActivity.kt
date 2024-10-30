@@ -5,9 +5,14 @@ import android.app.DownloadManager
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.util.DisplayMetrics
+import android.view.ViewGroup
+import android.view.WindowManager
+import android.view.WindowMetrics
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.LinearLayout
+import android.widget.LinearLayout.LayoutParams
 import android.widget.TextView
 import androidx.activity.ComponentActivity
 import androidx.activity.enableEdgeToEdge
@@ -22,6 +27,8 @@ class MainActivity : ComponentActivity() {
     private lateinit var backupBootButton: LinearLayout
     private lateinit var installWindowsButton: LinearLayout
     private lateinit var downloadButton: LinearLayout
+
+    private lateinit var versionView: TextView
     //private lateinit var settingsButton: ImageView
 
     fun copyBinaries() {
@@ -29,7 +36,8 @@ class MainActivity : ComponentActivity() {
             "mkfs.fat",
             "mkfs.ntfs",
             "mount.ntfs",
-            "wimlib-imagex"
+            "wimlib-imagex",
+            "curl",
         )
 
         binaries.forEach { binary ->
@@ -45,7 +53,14 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_main)
-        
+
+//        val metrics: WindowMetrics = windowManager.currentWindowMetrics
+//
+//        val screenWidth = metrics.bounds.width()
+//        val screenHeight = metrics.bounds.height()
+//
+//        versionView = findViewById(R.id.version)
+//        versionView.textSize = screenHeight * 0.0052f
 
         Commands.context = this
 
