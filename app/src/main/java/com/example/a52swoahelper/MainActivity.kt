@@ -61,7 +61,7 @@ class MainActivity : ComponentActivity() {
 
         Files.createFolderIfFolderDontExists("/sdcard/WindowsInstall", this)
         Files.createFolderIfFolderDontExists("/sdcard/UEFI", this)
-        Files.createFolderIfFolderDontExists("/sdcard/Windows", this)
+//        Files.createFolderIfFolderDontExists("/sdcard/Windows", this)
 
         copyBinaries()
 

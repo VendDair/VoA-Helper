@@ -1,5 +1,6 @@
 package com.example.a52swoahelper
 
+import android.annotation.SuppressLint
 import android.app.AlertDialog
 import android.app.Dialog
 import android.content.Context
@@ -30,7 +31,7 @@ class DownloadDialog(private val context: Context) {
         dialog.dismiss()
     }
 
-    fun showDialog(fileName: String) {
+    fun showDialog(fileName: String, @SuppressLint("SdCardPath") outputPath: String = "/sdcard/WindowsInstall/") {
         this.fileName = fileName
         // Inflate the custom layout
         val dialogView: View = LayoutInflater.from(context).inflate(R.layout.download_dialog, null)
@@ -53,8 +54,9 @@ class DownloadDialog(private val context: Context) {
         downloadButton.setOnClickListener {
             dialog.setCancelable(false)
             stopButton.isEnabled = !stopButton.isEnabled
+            Files.createFolderIfFolderDontExists(outputPath, context)
 //            executeCommand("su -c /data/local/tmp/curl -L -o /sdcard/WindowsInstall/$fileName https://github.com/VendDair/VoA-Helper/releases/download/FILES/$fileName")
-            executeCommand("su -c /data/local/tmp/busybox wget https://github.com/VendDair/VoA-Helper/releases/download/FILES/$fileName -O /sdcard/WindowsInstall/$fileName")
+            executeCommand("su -c /data/local/tmp/busybox wget https://github.com/VendDair/VoA-Helper/releases/download/FILES/$fileName -O $outputPath$fileName")
 //            executeCommand("su -c \"/data/local/tmp/busybox wget -P /sdcard/WindowsInstall/ -O /sdcard/WindowsInstall/pe.img https://github.com/VendDair/VoA-Helper/releases/download/FILES/pe.img\"\n")
         }
 

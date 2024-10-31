@@ -93,6 +93,7 @@
             android:background="@drawable/round_rectangle_gray"
             android:clickable="true"
             android:clipToOutline="true"
+            android:layout_marginBottom="40px"
             android:orientation="horizontal"
             app:layout_constraintHeight_percent="0.12"
             tools:ignore="PxUsage">
@@ -135,6 +136,64 @@
                     tools:ignore="HardcodedText,PxUsage" />
 
             </LinearLayout>
+
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/uefiButton"
+            android:layout_width="match_parent"
+            android:layout_height="250px"
+
+            android:background="@drawable/round_rectangle_gray"
+            android:clickable="true"
+            android:clipToOutline="true"
+            android:layout_marginBottom="40px"
+            android:orientation="horizontal"
+            app:layout_constraintHeight_percent="0.12"
+            tools:ignore="PxUsage">
+
+            <ImageView
+                android:id="@+id/uefiImage"
+                android:layout_width="150px"
+                android:layout_height="wrap_content"
+                android:contentDescription="Win11 logo"
+                android:padding="30px"
+                android:src="@drawable/uefi"
+                tools:ignore="HardcodedText,PxUsage" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/uefiLabel"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:gravity="bottom"
+                    android:text="DOWNLOAD UEFI"
+                    android:textColor="@color/white"
+                    android:textSize="36px"
+                    android:textStyle="bold"
+                    tools:ignore="HardcodedText,PxUsage" />
+
+                <TextView
+                    android:id="@+id/uefiDescription"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:text="Download latest uefi image"
+                    android:textColor="@color/light_gray"
+                    android:textSize="32px"
+                    android:textStyle="italic"
+                    tools:ignore="HardcodedText,PxUsage" />
+
+            </LinearLayout>
+
+
 
         </LinearLayout>
 
