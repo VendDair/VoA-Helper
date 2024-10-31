@@ -94,6 +94,7 @@ class InstallWindows {
                 if (path == null) return@showWimFilesDialog
 
                 val indexes = fetchWimFileIndexes(path)
+                Toast.makeText(MainActivity.context, indexes, Toast.LENGTH_SHORT).show()
                 showIndexDialog(indexes) { index ->
                     if (index == null) return@showIndexDialog
 

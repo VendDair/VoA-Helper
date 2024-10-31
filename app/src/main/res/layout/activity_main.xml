@@ -339,7 +339,7 @@
 
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/version"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"

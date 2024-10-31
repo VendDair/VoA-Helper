@@ -56,7 +56,7 @@ class DownloadDialog(private val context: Context) {
             stopButton.isEnabled = !stopButton.isEnabled
             Files.createFolderIfFolderDontExists(outputPath, context)
 //            executeCommand("su -c /data/local/tmp/curl -L -o /sdcard/WindowsInstall/$fileName https://github.com/VendDair/VoA-Helper/releases/download/FILES/$fileName")
-            executeCommand("su -c /data/local/tmp/busybox wget https://github.com/VendDair/VoA-Helper/releases/download/FILES/$fileName -O $outputPath$fileName")
+            executeCommand("su -c /data/local/tmp/busybox wget --no-check-certificate https://github.com/VendDair/VoA-Helper/releases/download/FILES/$fileName -O $outputPath$fileName")
 //            executeCommand("su -c \"/data/local/tmp/busybox wget -P /sdcard/WindowsInstall/ -O /sdcard/WindowsInstall/pe.img https://github.com/VendDair/VoA-Helper/releases/download/FILES/pe.img\"\n")
         }
 

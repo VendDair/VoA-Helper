@@ -8,6 +8,7 @@ import android.os.Bundle
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
+import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.enableEdgeToEdge
 import com.example.a52swoahelper.Commands.Companion.executeCommand
@@ -29,7 +30,7 @@ class MainActivity : ComponentActivity() {
         lateinit var context: Context
     }
 
-    fun copyBinaries() {
+    private fun copyBinaries() {
         val binaries = listOf(
             "mkfs.fat",
             "mkfs.ntfs",
@@ -70,6 +71,21 @@ class MainActivity : ComponentActivity() {
         copyBinaries()
 
         val settingsPreferences = getSharedPreferences("settings", Context.MODE_PRIVATE)
+
+        versionView = findViewById(R.id.version)
+        if (!Updates.checkUpdate(versionView.text.removePrefix("BETA_").toString()))
+            UniversalDialog(this).showDialog(
+                image = R.drawable.update,
+                title = "New Update!",
+                text = "New update is available!",
+                buttons = listOf(
+                    Pair("Download") {
+                        val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/VendDair/VoA-Helper/releases"))
+                        startActivity(intent)
+                    },
+                    Pair("Later") {}
+                )
+            )
 
         settingsButton = findViewById(R.id.settings)
         settingsButton.setOnClickListener {
