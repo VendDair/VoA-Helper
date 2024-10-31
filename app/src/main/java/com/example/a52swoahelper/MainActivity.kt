@@ -5,6 +5,7 @@ import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.provider.Telephony.Mms.Part
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
@@ -164,7 +165,7 @@ class MainActivity : ComponentActivity() {
                         )
                     },
                     Pair("PARTITION") {
-                        Commands.partition()
+                        Partitions.partition()
 //                        Commands.installWindows(1)
                     },
                     Pair("GUIDE") {
