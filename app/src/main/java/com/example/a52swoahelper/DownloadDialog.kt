@@ -41,6 +41,9 @@ class DownloadDialog(private val context: Context) {
             .setCancelable(true)
 
         stopButton = dialogView.findViewById(R.id.stopButton)
+
+        stopButton.isEnabled = false
+
         stopButton.setOnClickListener {
             cancelDownloading()
         }
@@ -48,14 +51,16 @@ class DownloadDialog(private val context: Context) {
         terminalTextView = dialogView.findViewById(R.id.terminal) // Assuming you have a TextView in your layout
         val downloadButton: Button = dialogView.findViewById(R.id.downloadButton)
         downloadButton.setOnClickListener {
-            executeCommand("su -c /data/local/tmp/curl -L -o /sdcard/WindowsInstall/$fileName https://github.com/VendDair/VoA-Helper/releases/download/FILES/$fileName")
-//            executeCommand("su -c /data/local/tmp/busybox wget --no-check-certificate -P /sdcard/Download -O $fileName https://github.com/VendDair/VoA-Helper/releases/download/FILES/$fileName")
-
+            dialog.setCancelable(false)
+            stopButton.isEnabled = !stopButton.isEnabled
+//            executeCommand("su -c /data/local/tmp/curl -L -o /sdcard/WindowsInstall/$fileName https://github.com/VendDair/VoA-Helper/releases/download/FILES/$fileName")
+            executeCommand("su -c /data/local/tmp/busybox wget https://github.com/VendDair/VoA-Helper/releases/download/FILES/$fileName -O /sdcard/WindowsInstall/$fileName")
+//            executeCommand("su -c \"/data/local/tmp/busybox wget -P /sdcard/WindowsInstall/ -O /sdcard/WindowsInstall/pe.img https://github.com/VendDair/VoA-Helper/releases/download/FILES/pe.img\"\n")
         }
 
-        dialogBuilder.setOnCancelListener {
-            cancelDownloading()
-        }
+//        dialogBuilder.setOnCancelListener {
+//            cancelDownloading()
+//        }
 
         // Create and show the dialog
         dialog = dialogBuilder.create()
