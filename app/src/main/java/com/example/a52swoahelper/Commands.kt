@@ -74,7 +74,7 @@ class Commands {
             if (!isWindowsMounted()) {
                 executeCommand("mkdir $mountFolder")
                 executeCommand("su -mm -c /data/local/tmp/mount.ntfs -o rw $winPartition $mountFolder")
-                InformationDialog(settingsPreferences).showDialog("Windows was mounted to ${settingsPreferences.getString("mountFolder", "/sdcard/Windows")}")
+                InformationDialog().showDialog("Windows was mounted to ${settingsPreferences.getString("mountFolder", "/sdcard/Windows")}")
                 return true
             } else {
                 executeCommand("su -mm -c umount $winPartition")

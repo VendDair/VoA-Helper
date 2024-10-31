@@ -3,26 +3,32 @@ package com.example.a52swoahelper
 import android.annotation.SuppressLint
 import android.content.Context
 import android.view.Gravity
+import android.widget.Toast
 import com.example.a52swoahelper.Commands.Companion.executeCommand
 
 class InstallWindows {
 
     companion object {
         @SuppressLint("SdCardPath")
-        private fun showWimFilesDialog(method: Int): String? {
-            var path: String? = null
+        private fun showWimFilesDialog(onPathSelected: (String?) -> Unit) {
             val wimFiles = fetchWimFiles()
             val wimFilesList = prepareWimFilesList(wimFiles)
 
-            val indexDialog = IndexDialog(MainActivity.context)
-            indexDialog.showDialog(
-                title = "Select the wim you want to install",
-                Commands.adjustIndexList(wimFilesList)
+            val inputDialog = InputDialog(MainActivity.context)
+            inputDialog.showDialog(
+                title = "Select the wim/esd you want to install",
+                text = Commands.adjustIndexList(wimFilesList).joinToString("\n")
             ) {
-                val selectedWimFile = wimFilesList[indexDialog.index - 1]
-                path = "/sdcard/WindowsInstall/$selectedWimFile"
+                // This is the callback that gets called when the dialog is confirmed
+                val selectedIndex = inputDialog.text.toIntOrNull() // Safely convert to Int
+                if (selectedIndex != null && selectedIndex in 1..wimFilesList.size) {
+                    val selectedWimFile = wimFilesList[selectedIndex - 1]
+                    val path = "/sdcard/WindowsInstall/$selectedWimFile"
+                    onPathSelected(path) // Pass the path to the callback
+                } else {
+                    onPathSelected(null) // Handle invalid input
+                }
             }
-            return path
         }
 
         private fun fetchWimFiles(): String {
@@ -40,17 +46,17 @@ class InstallWindows {
             )
         }
 
-        private fun showIndexDialog(indexes: String, method: Int, path: String): Int? {
-            var index: Int? = null
-            val indexDialog = IndexDialog(MainActivity.context)
-            indexDialog.showDialog(
+        private fun showIndexDialog(indexes: String, onIndexSelected: (Int?) -> Unit) {
+            val inputDialog = InputDialog(MainActivity.context)
+            inputDialog.showDialog(
                 title = "Select index",
-                listOf(indexes),
-                Gravity.START
-            ) {
-                index = indexDialog.index
+                text = indexes,
+                textGravity = Gravity.START
+            ) { text ->
+                // Safely convert the text to Int and pass it to the callback
+                val index = text.toIntOrNull()
+                onIndexSelected(index) // Call the callback with the selected index
             }
-            return index
         }
 
         private fun handleFlashMethod(method: Int, context: Context) {
@@ -84,12 +90,20 @@ class InstallWindows {
                 )
             ) return
 
-            val pathToWim  = showWimFilesDialog(method)
-            val indexes = fetchWimFileIndexes(pathToWim!!)
-            val index = showIndexDialog(indexes, method, pathToWim)
-            handleFlashMethod(method, MainActivity.context)
-            savePathAndIndex(pathToWim, index!!)
-            rebootRecovery()
+            showWimFilesDialog { path ->
+                if (path == null) return@showWimFilesDialog
+
+                val indexes = fetchWimFileIndexes(path)
+                showIndexDialog(indexes) { index ->
+                    if (index == null) return@showIndexDialog
+
+                    handleFlashMethod(method, MainActivity.context)
+                    savePathAndIndex(path, index)
+                    rebootRecovery()
+                }
+
+            }
+
         }
     }
 

@@ -19,7 +19,7 @@ class InputDialog(private val context: Context) {
     var text: String = ""
 
     fun showDialog(title: String, text: String,
-                   textGravity: Int = Gravity.CENTER, callback: () -> Unit, imageId: Int) {
+                   textGravity: Int = Gravity.CENTER, imageId: Int = R.drawable.win11logo, callback: (text: String) -> Unit) {
         // Inflate the custom layout
         val dialogView: View = LayoutInflater.from(context).inflate(R.layout.input_dialog, null)
 
@@ -47,9 +47,7 @@ class InputDialog(private val context: Context) {
 
                 this.text = inputText
 
-                dialog.dismiss()
-
-                callback()
+                callback(inputText)
 
                 dialog.dismiss()
                 true // Indicate that the event was handled
