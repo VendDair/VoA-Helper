@@ -8,7 +8,7 @@ class Updates {
 
             val remoteVersion = Commands.executeCommand("su -c /data/local/tmp/busybox wget --no-check-certificate -qO- https://github.com/VendDair/VoA-Helper/releases/download/FILES/latest_version_name", true)
 
-            return version == remoteVersion
+            return !version.contains(remoteVersion)
         }
     }
 }

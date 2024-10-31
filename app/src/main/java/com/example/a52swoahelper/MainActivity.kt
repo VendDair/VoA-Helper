@@ -73,7 +73,7 @@ class MainActivity : ComponentActivity() {
         val settingsPreferences = getSharedPreferences("settings", Context.MODE_PRIVATE)
 
         versionView = findViewById(R.id.version)
-        if (!Updates.checkUpdate(versionView.text.removePrefix("BETA_").toString()))
+        if (Updates.checkUpdate(versionView.text.removePrefix("BETA_").toString()))
             UniversalDialog(this).showDialog(
                 image = R.drawable.update,
                 title = "New Update!",
