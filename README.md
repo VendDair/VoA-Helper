@@ -26,21 +26,11 @@ It's simple. They can be found here:
 
 For generic Windows images, you can use [WoR Poject](https://worproject.com/esd)
 
-Now you need to open the [app](https://github.com/VendDair/VoA-Helper/releases) and exit it.
+Now you need to open the [app](https://github.com/VendDair/VoA-Helper/releases)
 
-It will have created 2 folders that are needed for it to function properly.
+Open *Download Manager* and install all **winpe**, **drivers** and **uefi**
 
-Then [download](https://github.com/VendDair/VoA-Helper/releases/tag/FILES) **Driver.zip**, **pe.img** and **uefi.img**
-
-Put **Driver.zip**,**pe.img** and **wim/esd file** in *WindowsInstall* folder
-
-<img src="https://github.com/VendDair/VoA-Helper/blob/main/Guide%20stuff/windowsinstall.png" alt="Image" width="300" />
-
-Then put **uefi.img** in UEFI folder
-
-<img src="https://github.com/VendDair/VoA-Helper/blob/main/Guide%20stuff/uefi.png" alt="Image" width="300" />
-
-After that go into the app and press *Install Windows* and press *yes*
+After that go back and press *Install Windows* and press *yes*
 
 Then select your preferred method, select the wim/esd listed there (If you put a number that is not listed, the app will crash) and select the index listed there you want
 
