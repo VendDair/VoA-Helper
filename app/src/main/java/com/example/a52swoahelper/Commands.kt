@@ -1,17 +1,11 @@
 package com.example.a52swoahelper
 
 import android.annotation.SuppressLint
-import android.content.Context
 import android.content.SharedPreferences
-import android.view.Gravity
-import android.widget.Toast
 
 
 class Commands {
     companion object {
-
-        @SuppressLint("StaticFieldLeak")
-        lateinit var context: Context
 
         fun adjustIndexList(strings: List<String>): List<String> {
             return strings.mapIndexed { index, value -> "${index + 1}. $value" }
@@ -57,9 +51,9 @@ class Commands {
 
 
         @SuppressLint("SdCardPath")
-        fun bootIntoWindows(context: Context) {
-            Files.createFolderIfFolderDontExists("/sdcard/UEFI", context)
-            if (Files.alertUserIfFileDoesntExist("uefi.img", "/sdcard/UEFI/", context)) return
+        fun bootIntoWindows() {
+            Files.createFolderIfFolderDontExists("/sdcard/UEFI", MainActivity.context)
+            if (Files.alertUserIfFileDoesntExist("uefi.img", "/sdcard/UEFI/", MainActivity.context)) return
             val command = "su -c dd if=/sdcard/UEFI/uefi.img of=/dev/block/by-name/boot bs=8M"
             executeCommand(command)
             executeCommand("su -c reboot")
@@ -93,11 +87,6 @@ class Commands {
         fun backupBootImage() {
             executeCommand("su -c dd bs=8M if=/dev/block/by-name/boot of=/sdcard/boot.img")
         }
-
-
-
-
-        // voa installers code
 
     }
 }

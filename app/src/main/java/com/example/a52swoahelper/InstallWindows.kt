@@ -3,18 +3,17 @@ package com.example.a52swoahelper
 import android.annotation.SuppressLint
 import android.content.Context
 import android.view.Gravity
-import com.example.a52swoahelper.Commands.Companion.context
 import com.example.a52swoahelper.Commands.Companion.executeCommand
 
 class InstallWindows {
 
     companion object {
         @SuppressLint("SdCardPath")
-        private fun showWimFilesDialog(context: Context, method: Int) {
+        private fun showWimFilesDialog(method: Int) {
             val wimFiles = fetchWimFiles()
             val wimFilesList = prepareWimFilesList(wimFiles)
 
-            val indexDialog = IndexDialog(context)
+            val indexDialog = IndexDialog(MainActivity.context)
             indexDialog.showDialog(
                 title = "Select the wim you want to install",
                 Commands.adjustIndexList(wimFilesList)
@@ -23,7 +22,7 @@ class InstallWindows {
                 val path = "/sdcard/WindowsInstall/$selectedWimFile"
 
                 val indexes = fetchWimFileIndexes(path)
-                showIndexDialog(context, indexes, method, path)
+                showIndexDialog(indexes, method, path)
             }
         }
 
@@ -42,15 +41,15 @@ class InstallWindows {
             )
         }
 
-        private fun showIndexDialog(context: Context, indexes: String, method: Int, path: String) {
-            val indexDialog = IndexDialog(context)
+        private fun showIndexDialog(indexes: String, method: Int, path: String) {
+            val indexDialog = IndexDialog(MainActivity.context)
             indexDialog.showDialog(
                 title = "Select index",
                 listOf(indexes),
                 Gravity.START
             ) {
                 val index = indexDialog.index
-                handleFlashMethod(method, context)
+                handleFlashMethod(method, MainActivity.context)
                 savePathAndIndex(path, index)
                 rebootRecovery()
             }
@@ -77,17 +76,17 @@ class InstallWindows {
             if (Files.alertUserIfFileDoesntExist(
                     "pe.img",
                     "/sdcard/WindowsInstall/",
-                    context
+                    MainActivity.context
                 )
             ) return
             if (Files.alertUserIfFileDoesntExist(
                     "Driver.zip",
                     "/sdcard/WindowsInstall/",
-                    context
+                    MainActivity.context
                 )
             ) return
 
-            showWimFilesDialog(context, method)
+            showWimFilesDialog(method)
 
         }
     }

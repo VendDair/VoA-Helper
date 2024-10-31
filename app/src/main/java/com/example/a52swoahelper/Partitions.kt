@@ -1,13 +1,12 @@
 package com.example.a52swoahelper
 
-import com.example.a52swoahelper.Commands.Companion.context
 import com.example.a52swoahelper.Commands.Companion.executeCommand
 
 class Partitions {
     companion object {
 
         private fun selectStorage() {
-            val spaceDialog = InputDialog(context)
+            val spaceDialog = InputDialog(MainActivity.context)
             spaceDialog.showDialog(
                 title = "Storage",
                 text = "How much space you want to give to windows\nIn GB",
@@ -27,7 +26,7 @@ class Partitions {
         }
 
         private fun showWarning() {
-            UniversalDialog(context).showDialog(
+            UniversalDialog(MainActivity.context).showDialog(
                 title = "WARNING!",
                 text = "Android may not work correctly after doing that\nConsider on making an backup!",
                 image = R.drawable.warning,
@@ -42,7 +41,6 @@ class Partitions {
 
         fun partition() {
             showWarning()
-
         }
     }
 }

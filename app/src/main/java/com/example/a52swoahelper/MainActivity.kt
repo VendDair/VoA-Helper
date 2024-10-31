@@ -5,13 +5,11 @@ import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.provider.Telephony.Mms.Part
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.activity.ComponentActivity
 import androidx.activity.enableEdgeToEdge
-import com.example.a52swoahelper.Commands.Companion.context
 import com.example.a52swoahelper.Commands.Companion.executeCommand
 
 class MainActivity : ComponentActivity() {
@@ -25,6 +23,11 @@ class MainActivity : ComponentActivity() {
 
     private lateinit var versionView: TextView
     private lateinit var settingsButton: ImageView
+
+    companion object {
+        @SuppressLint("StaticFieldLeak")
+        lateinit var context: Context
+    }
 
     fun copyBinaries() {
         val binaries = listOf(
@@ -58,7 +61,7 @@ class MainActivity : ComponentActivity() {
 //        versionView = findViewById(R.id.version)
 //        versionView.textSize = screenHeight * 0.0052f
 
-        Commands.context = this
+        context = this
 
         Files.createFolderIfFolderDontExists("/sdcard/WindowsInstall", this)
         Files.createFolderIfFolderDontExists("/sdcard/UEFI", this)
@@ -89,7 +92,7 @@ class MainActivity : ComponentActivity() {
                 title = getString(R.string.boot_to_windows_dialog),
                 buttons = listOf(
                     Pair("YES") {
-                        Commands.bootIntoWindows(this)
+                        Commands.bootIntoWindows()
                     },
                     Pair("NO") {}
                 )
@@ -166,7 +169,6 @@ class MainActivity : ComponentActivity() {
                     },
                     Pair("PARTITION") {
                         Partitions.partition()
-//                        Commands.installWindows(1)
                     },
                     Pair("GUIDE") {
 
