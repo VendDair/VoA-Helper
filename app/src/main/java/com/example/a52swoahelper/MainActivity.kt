@@ -8,7 +8,6 @@ import android.os.Bundle
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
-import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.enableEdgeToEdge
 import com.example.a52swoahelper.Commands.Companion.context
@@ -156,10 +155,10 @@ class MainActivity : ComponentActivity() {
                             title = "Select method",
                             buttons = listOf(
                                 Pair("Pre-made Image\n(fast)") {
-                                    Commands.installWindows(1)
+                                    InstallWindows.install(1)
                                 },
                                 Pair("Custom Image\n(slower)") {
-                                    Commands.installWindows( 2)
+                                    InstallWindows.install( 2)
                                 }
                             )
                         )
