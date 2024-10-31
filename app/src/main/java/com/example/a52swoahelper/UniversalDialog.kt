@@ -27,7 +27,7 @@ class UniversalDialog(private val context: Context) {
             .setView(dialogView)
             .setCancelable(true)
 
-        val imaggeView: ImageView = dialogView.findViewById(R.id.image)
+        val imageView: ImageView = dialogView.findViewById(R.id.image)
         val dialogText: TextView = dialogView.findViewById(R.id.title)
         val textText: TextView = dialogView.findViewById(R.id.text)
         val container: LinearLayout = dialogView.findViewById(R.id.container)
@@ -35,7 +35,7 @@ class UniversalDialog(private val context: Context) {
         dialogText.text = title
         textText.text = text
         textText.gravity = textGravity
-        imaggeView.setImageResource(image)
+        imageView.setImageResource(image)
 
         if (text == "") {
             val textTextParams = textText.layoutParams as ViewGroup.MarginLayoutParams

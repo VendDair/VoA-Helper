@@ -9,7 +9,8 @@ class InstallWindows {
 
     companion object {
         @SuppressLint("SdCardPath")
-        private fun showWimFilesDialog(method: Int) {
+        private fun showWimFilesDialog(method: Int): String? {
+            var path: String? = null
             val wimFiles = fetchWimFiles()
             val wimFilesList = prepareWimFilesList(wimFiles)
 
@@ -19,11 +20,9 @@ class InstallWindows {
                 Commands.adjustIndexList(wimFilesList)
             ) {
                 val selectedWimFile = wimFilesList[indexDialog.index - 1]
-                val path = "/sdcard/WindowsInstall/$selectedWimFile"
-
-                val indexes = fetchWimFileIndexes(path)
-                showIndexDialog(indexes, method, path)
+                path = "/sdcard/WindowsInstall/$selectedWimFile"
             }
+            return path
         }
 
         private fun fetchWimFiles(): String {
@@ -41,18 +40,17 @@ class InstallWindows {
             )
         }
 
-        private fun showIndexDialog(indexes: String, method: Int, path: String) {
+        private fun showIndexDialog(indexes: String, method: Int, path: String): Int? {
+            var index: Int? = null
             val indexDialog = IndexDialog(MainActivity.context)
             indexDialog.showDialog(
                 title = "Select index",
                 listOf(indexes),
                 Gravity.START
             ) {
-                val index = indexDialog.index
-                handleFlashMethod(method, MainActivity.context)
-                savePathAndIndex(path, index)
-                rebootRecovery()
+                index = indexDialog.index
             }
+            return index
         }
 
         private fun handleFlashMethod(method: Int, context: Context) {
@@ -86,8 +84,12 @@ class InstallWindows {
                 )
             ) return
 
-            showWimFilesDialog(method)
-
+            val pathToWim  = showWimFilesDialog(method)
+            val indexes = fetchWimFileIndexes(pathToWim!!)
+            val index = showIndexDialog(indexes, method, pathToWim)
+            handleFlashMethod(method, MainActivity.context)
+            savePathAndIndex(pathToWim, index!!)
+            rebootRecovery()
         }
     }
 
