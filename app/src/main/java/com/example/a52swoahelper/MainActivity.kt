@@ -32,7 +32,7 @@ class MainActivity : ComponentActivity() {
             "mkfs.ntfs",
             "mount.ntfs",
             "wimlib-imagex",
-            "curl",
+            "busybox",
         )
 
         binaries.forEach { binary ->
