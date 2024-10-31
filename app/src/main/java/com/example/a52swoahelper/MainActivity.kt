@@ -33,6 +33,7 @@ class MainActivity : ComponentActivity() {
             "mount.ntfs",
             "wimlib-imagex",
             "busybox",
+            "parted",
         )
 
         binaries.forEach { binary ->
@@ -162,6 +163,10 @@ class MainActivity : ComponentActivity() {
                                 }
                             )
                         )
+                    },
+                    Pair("PARTITION") {
+                        Commands.partition()
+//                        Commands.installWindows(1)
                     },
                     Pair("GUIDE") {
 
