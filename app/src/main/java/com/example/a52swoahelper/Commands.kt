@@ -67,22 +67,24 @@ class Commands {
 
 
         fun isWindowsMounted(): Boolean {
-            val isMounted = executeCommand("su -c mount | grep Windows", true)
+            val winPartition = executeCommand("su -c realpath /dev/block/by-name/win", true)
+            val isMounted = executeCommand("su -c mount | grep $winPartition", true)
             return isMounted.isNotEmpty()
         }
 
         @SuppressLint("SdCardPath")
         fun mountWindows(settingsPreferences: SharedPreferences): Boolean {
+            val winPartition = executeCommand("su -c realpath /dev/block/by-name/win", true)
             val mountFolder = if (settingsPreferences.getBoolean("mountToMnt", false)) "/mnt/sdcard/Windows" else "/sdcard/Windows"
             settingsPreferences.edit().putString("mountFolder", mountFolder).apply()
             if (!isWindowsMounted()) {
                 executeCommand(
-                    "su -mm -c /data/local/tmp/mount.ntfs -o rw /dev/block/by-name/win $mountFolder",
+                    "su -mm -c /data/local/tmp/mount.ntfs -o rw $winPartition $mountFolder",
                     false
                 )
                 InformationDialog(settingsPreferences).showDialog("Windows was mounted to ${settingsPreferences.getString("mountFolder", "/sdcard/Windows")}")
                 return true
-            } else executeCommand("su -mm -c umount /dev/block/by-name/win")
+            } else executeCommand("su -mm -c umount $winPartition")
             return false
         }
 
