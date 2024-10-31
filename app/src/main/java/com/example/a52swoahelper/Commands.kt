@@ -78,13 +78,14 @@ class Commands {
             val mountFolder = if (settingsPreferences.getBoolean("mountToMnt", false)) "/mnt/sdcard/Windows" else "/sdcard/Windows"
             settingsPreferences.edit().putString("mountFolder", mountFolder).apply()
             if (!isWindowsMounted()) {
-                executeCommand(
-                    "su -mm -c /data/local/tmp/mount.ntfs -o rw $winPartition $mountFolder",
-                    false
-                )
+                executeCommand("mkdir $mountFolder")
+                executeCommand("su -mm -c /data/local/tmp/mount.ntfs -o rw $winPartition $mountFolder")
                 InformationDialog(settingsPreferences).showDialog("Windows was mounted to ${settingsPreferences.getString("mountFolder", "/sdcard/Windows")}")
                 return true
-            } else executeCommand("su -mm -c umount $winPartition")
+            } else {
+                executeCommand("su -mm -c umount $winPartition")
+                executeCommand("su -c rm $mountFolder -rf")
+            }
             return false
         }
 
